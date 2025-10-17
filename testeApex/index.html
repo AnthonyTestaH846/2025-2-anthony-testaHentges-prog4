@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TESTE APEX</title>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> 
+        <link rel="stylesheet" href="index.css">
+    </head>
+
+    <body>
+
+        <h2>TESTE GRÁFICO DE BARRAS APEXCHARTS</h2>
+
+        <div id="grafico"></div>
+    <script>
+    let el = document.getElementById("grafico");
+    let options = {
+        chart: { type: 'bar', //gráfico de barras
+                heigth: 800,
+                width:  1000,
+        },
+        series:[
+            {
+            name: 'Chuva', 
+            data: [10,30,20]},
+           {name: 'Úmidade', 
+            data: [50,70,65]
+        }
+        ],
+        xaxis:{
+            categories:["Chapecó", "Xaxim", "Pinhalzinho"]
+        },
+        plotOptions:{
+            bar:{
+                horizontal:false,
+                datalabels:{
+                    position:'top'
+                }
+            }
+        },
+        yaxis:{
+            min: 0,
+            max: 100
+        },
+        grid:{
+            show: true,
+              xaxis:{
+                lines:{
+                    show:true
+                }
+              }
+        },
+        colors:['blue', 'purple']
+    }
+
+    let chart = new ApexCharts (el, options);
+        chart.render()
+    </script>
+
+    </body>
+</html>
