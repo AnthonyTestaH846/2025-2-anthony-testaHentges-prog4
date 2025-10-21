@@ -24,3 +24,33 @@ section{
     background-color: white;
     color: black;
 }
+
+.menu {
+    margin-left: 350px;
+    margin-right: 350px;
+    display: flex;
+    background-color:rgb(144, 141, 160);
+    padding: 15px;
+    gap: 15px;
+    justify-content: center;
+    list-style: none;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    display: block;
+    padding: 12px 20px;
+    color:rgb(16, 11, 54);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+    background-color: rgb(173, 162, 184);
+    color: white;
+    font-weight: bolder;
+}
