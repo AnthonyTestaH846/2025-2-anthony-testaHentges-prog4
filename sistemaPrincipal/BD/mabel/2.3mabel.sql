@@ -1,0 +1,1 @@
+SELECT AVG(hi) AS media_te FROM leituramabel WHERE datahora BETWEEN :data_inicio AND :data_fim;
