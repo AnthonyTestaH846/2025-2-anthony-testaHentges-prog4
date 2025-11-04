@@ -18,15 +18,29 @@ footer{
     
 }
 
+<<<<<<< Updated upstream
 footer ul{
     list-style-type: none;
 }
+=======
+section{
+    margin: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 227, 70);
+    color: black;
+} */
+>>>>>>> Stashed changes
 
 .menu {
     margin-left: 1027px;
     margin-right: 5px;
     display: flex;
+<<<<<<< Updated upstream
     background-color:#ffc900;
+=======
+    background-color:rgb(231, 217, 20);
+    padding: 15px;
+>>>>>>> Stashed changes
     gap: 15px;
     justify-content: center;
     list-style: none;
@@ -37,7 +51,11 @@ footer ul{
 .menu a {
     display: block;
     padding: 12px 20px;
+<<<<<<< Updated upstream
     color:rgb(2, 1, 8);
+=======
+    color:rgb(5, 4, 12);
+>>>>>>> Stashed changes
     text-decoration: none;
     border-radius: 6px;
     font-weight: bold;
@@ -45,11 +63,12 @@ footer ul{
 }
 
 .menu a:hover {
-    background-color: rgb(173, 162, 184);
+    background-color: rgb(248, 213, 54);
     color: white;
     font-weight: bolder;
-}
+} 
 
+<<<<<<< Updated upstream
 #logoifscfooter{
     max-width: 150px;
     max-height: 150px;
@@ -62,6 +81,11 @@ footer ul{
 .divfooter{
     margin-left: 100px;
 }
+=======
+/* #logoifscfooter{
+    
+} */ 
+>>>>>>> Stashed changes
 
 /* TESTE COM CSS CANVA */
 
