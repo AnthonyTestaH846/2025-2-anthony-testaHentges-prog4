@@ -1,0 +1,1 @@
+SELECT MAX(ninho) AS max_ninho FROM leituramabel WHERE datahora BETWEEN :data_inicio AND :data_fim;
