@@ -1,0 +1,2 @@
+SELECT datahora
+FROM   leituramabel;
