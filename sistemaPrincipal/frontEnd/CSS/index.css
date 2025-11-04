@@ -1,15 +1,14 @@
 
 Header{
-    background-color: rgb(255, 255, 255);
+    background-color: #094411;
     color: rgb(0, 0, 0);
-    padding: 10px;
     text-align: right;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 footer{
     display: flex;
-    background-color: #0a5815;
+    background-color: #094411;
     color: white;
     padding: 10px;
     text-align: center;
@@ -34,9 +33,9 @@ section{
     margin-left: 1027px;
     margin-right: 5px;
     display: flex;
-    background-color:#ffc900;
-    padding: 15px;
-    gap: 15px;
+    background-color:#094411;
+    padding: -30px;
+    gap: 30px;
     justify-content: center;
     list-style: none;
     margin-bottom: 20px;
@@ -46,7 +45,7 @@ section{
 .menu a {
     display: block;
     padding: 12px 20px;
-    color:rgb(5, 4, 12);
+    color:rgb(3, 31, 4);
     text-decoration: none;
     border-radius: 6px;
     font-weight: bold;
@@ -54,7 +53,7 @@ section{
 }
 
 .menu a:hover {
-    background-color: rgb(248, 213, 54);
+    background-color: #18922983;
     color: white;
     font-weight: bolder;
 } 
@@ -92,7 +91,7 @@ section{
 
 /* Variáveis de cor */
 :root {
-    --yellow: #ffc900;
+    --yellow: #ffbe0b;
     --white: #fff;
     --text: #212121;
 }
@@ -162,12 +161,12 @@ body {
 }
 
 .hex {
-    width: 130px;
+    width: 180px;
     aspect-ratio: 1 / 1;
     clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
     overflow: hidden;
     background-color: var(--white);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 8px rgb(0, 0, 0);
 }
 
 .hex img {
