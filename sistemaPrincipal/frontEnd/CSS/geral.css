@@ -8,13 +8,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 }
 
-header{
-    background-color:rgb(14, 13, 12);
-    color:rgb(245, 243, 239);
-    text-align: center;
-    padding: 25px;
-    border-radius: 5px;
-}
+
 
 #link_inicio {
     text-align: center;
@@ -37,8 +31,17 @@ header{
     --text: #212121;
 }
 
+header{
+    background-color:rgb(14, 13, 12);
+    color:rgb(245, 243, 239);
+    text-align: center;
+    padding: 25px;
+    border-radius: 5px;
+}
+
 /* Estilo geral */
 body {
+    padding: 0;
     margin: 0;
     font-family: "Poppins", sans-serif;
     background-color: var(--white);
