@@ -4,11 +4,23 @@ Header{
     padding: 0;
     display: flex;
     margin: 0;
-    background-color: #094411;
+    background-color: #cacccb;
     color: rgb(0, 0, 0);
     text-align: right;
     font-family: Arial, Helvetica, sans-serif;
+    border-bottom: solid 2px rgb(189, 187, 187);
 }
+
+header picture{
+    align-self: center;
+}
+
+header img{
+    margin-left: 10px;
+    max-width: auto;
+    max-height: 60px;
+}
+
 
 footer{
     display: flex;
@@ -16,14 +28,29 @@ footer{
     color: white;
     padding: 10px;
     text-align: left;
-    font-family: Arial, Helvetica, sans-serif;
-    
-    
+    font-family: Arial, Helvetica, sans-serif;    
 }
 
-footer #titulosfooter {
-    
+footer a{
+    display: block;
+    color:rgba(103, 214, 105, 0.945);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s, color 0.3s;
 }
+
+footer a:hover{
+    display: block;
+    padding: 8 8 8 8;
+    color:rgba(255, 255, 255, 0.945);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s, color 0.3s;
+    background-color: #18922983;
+}
+
 
 footer ul{
     justify-items: center;
@@ -40,10 +67,10 @@ section{
 
 .menu {
     align-self: center;
-    margin-left: 1027px;
+    margin-left: 827px;
     margin-right: 5px;
     display: flex;
-    background-color:#094411d5;
+    background-color: #cacccb;
     padding: -30px;
     gap: 30px;
     justify-content: center;
@@ -55,7 +82,7 @@ section{
 .menu a {
     display: block;
     padding: 12px 20px;
-    color:rgba(135, 187, 136, 0.945);
+    color:rgba(0, 173, 3, 0.945);
     text-decoration: none;
     border-radius: 6px;
     font-weight: bold;
@@ -63,11 +90,10 @@ section{
 }
 
 .menu a:hover {
-    background-color: #18922983;
+    background-color: #009714;
     color: white;
     font-weight: bolder;
 } 
-
 
 #logoifscfooter{
     max-width: 150px;
@@ -79,6 +105,7 @@ section{
 }
 
 .divfooter{
+    justify-items: center;
     align-items: center;
     margin-left: 100px;
 }
@@ -112,7 +139,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background-color: var(--white);
+    background-color: rgb(228, 228, 228);
 }
 
 /* Estrutura principal */
@@ -126,6 +153,7 @@ body {
 
 /* Lado esquerdo (texto) */
 .content {
+    align-self: center;
     flex: 1;
     padding: 4rem 5rem;
     position: relative;
@@ -157,6 +185,7 @@ body {
 
 /* Faixa amarela da direita */
 .right-section {
+    border-left: solid 2xp gray;
     background-color: var(--yellow);
     width: 35%;
     position: relative;
