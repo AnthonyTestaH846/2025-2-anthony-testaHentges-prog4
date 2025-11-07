@@ -1,3 +1,6 @@
+
+-- Exibir umidade e temperatura, interna e externa, realizadas em um dia específico
+
 SELECT
     datahora,
     ti,
