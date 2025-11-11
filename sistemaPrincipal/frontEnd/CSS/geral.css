@@ -26,16 +26,16 @@ body {
 /* HEADER + MENU */
 /* ========================= */
 
-header {
+Header{
+    height: 80px;
+    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--white);
-    height: 75px;
-    border-bottom: 1px solid #dcdcdc;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    margin: 0;
+    background-color: #cacccb;
+    color: rgb(0, 0, 0);
+    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: solid 2px rgb(189, 187, 187);
 }
 
 
@@ -50,25 +50,34 @@ header img{
 }
 
 .menu {
-    list-style: none;
+    align-self: center;
+    margin-left: 827px;
+    margin-right: 5px;
     display: flex;
-    gap: 2.5rem;
+    background-color: #cacccb;
+    padding: -30px;
+    gap: 30px;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .menu a {
+    display: block;
+    padding: 12px 20px;
+    color:rgba(0, 173, 3, 0.945);
     text-decoration: none;
-    font-weight: 600;
-    color: var(--primary);
-    font-size: 1rem;
-    padding: 8px 14px;
     border-radius: 6px;
-    transition: 0.3s;
+    font-weight: bold;
+    transition: 0.3s, color 0.3s;
 }
 
 .menu a:hover {
-    background: var(--primary);
-    color: var(--white);
-}
+    background-color: #009714;
+    color: white;
+    font-weight: bolder;
+} 
 
 /* ========================= */
 /* TÍTULO PRINCIPAL */
