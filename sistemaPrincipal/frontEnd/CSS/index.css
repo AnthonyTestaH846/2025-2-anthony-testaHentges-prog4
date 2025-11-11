@@ -96,6 +96,12 @@ section{
     font-weight: bolder;
 } 
 
+.menuItem.selected{
+    background-color: #009714;
+    color: white;
+    font-weight: bolder;
+}
+
 #logoifscfooter{
     max-width: 150px;
     max-height: 150px;
