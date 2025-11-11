@@ -8,7 +8,7 @@ SELECT
     hi,
     he
 FROM
-    leituramabel
+    leituramabel;
 WHERE
     DATE(datahora) = CURDATE()
 ORDER BY
