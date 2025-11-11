@@ -2,13 +2,13 @@
 -- Listar a média diária da umidade interna em um período específico de tempo. Aplicar filtro, cláusula where
 
 SELECT
-    dataleitura AS Data,
-    AVG(umidade) AS Umidade_Media_Diaria
+    datainclusao AS Data,
+    AVG(hi) AS Umidade_Media_Diaria
 FROM
     leituraptqa
 WHERE
-    CONCAT(dataleitura, ' ', horaleitura) BETWEEN 'YYYY-MM-DD HH:MM:SS' AND 'YYYY-MM-DD HH:MM:SS'
+    CONCAT(datainclusao, ' ', horainclusao) BETWEEN 'YYYY-MM-DD HH:MM:SS' AND 'YYYY-MM-DD HH:MM:SS'
 GROUP BY
-    dataleitura
+    datainclusao
 ORDER BY
-    dataleitura;
+    datainclusao;
