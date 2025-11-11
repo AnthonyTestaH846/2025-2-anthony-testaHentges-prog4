@@ -1,1 +1,0 @@
-SELECT DATE(datahora) AS dia, AVG(ti) AS media_diaria_ti FROM leituramabel WHERE datahora BETWEEN :data_inicio AND :data_fim GROUP BY dia ORDER BY dia ASC;

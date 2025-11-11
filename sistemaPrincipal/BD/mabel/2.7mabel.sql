@@ -1,1 +1,0 @@
-SELECT AVG(ti - te) AS media_diferenca FROM leituramabel WHERE datahora BETWEEN :data_inicio AND :data_fim;

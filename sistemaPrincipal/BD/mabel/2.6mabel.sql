@@ -1,1 +1,0 @@
-SELECT MIN(ninho) AS min_ninho FROM leituramabel WHERE datahora BETWEEN :data_inicio AND :data_fim;
