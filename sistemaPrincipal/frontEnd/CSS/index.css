@@ -5,11 +5,11 @@ Header{
     padding: 0;
     display: flex;
     margin: 0;
-    background-color: #cacccb;
+    background-color: #fafafa;
     color: rgb(0, 0, 0);
     text-align: right;
     font-family: Arial, Helvetica, sans-serif;
-    border-bottom: solid 2px rgb(189, 187, 187);
+    border-bottom: solid 2px rgb(213, 211, 211);
 }
 
 header picture{
@@ -71,13 +71,14 @@ section{
     margin-left: 827px;
     margin-right: 5px;
     display: flex;
-    background-color: #cacccb;
+    background-color: #fafafa;
     padding: -30px;
     gap: 30px;
     justify-content: center;
     list-style: none;
     margin-bottom: 20px;
     flex-wrap: wrap;
+    border-bottom: solid 2px rgb(213, 211, 211);
 }
 
 .menu a {
@@ -221,7 +222,7 @@ body {
     gap: 1.2rem;
 }
 
-.hex {
+a .hex {
     width: 250px;
     aspect-ratio: 1 / 1;
     clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
@@ -254,16 +255,16 @@ body {
 }
 
 /* Hexágonos em forma de triângulo */
-.hex:nth-child(1) {
+a .hex:nth-child(1) {
     grid-column: 1 / span 2;
     justify-self: center;
 }
 
-.hex:nth-child(2) {
+a .hex:nth-child(2) {
     justify-self: end;
 }
 
-.hex:nth-child(3) {
+a .hex:nth-child(3) {
     justify-self: start;
 }
 

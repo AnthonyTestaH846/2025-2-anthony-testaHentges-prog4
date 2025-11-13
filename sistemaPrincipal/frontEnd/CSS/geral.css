@@ -3,92 +3,128 @@
 /* ========================= */
 
 :root {
-    --primary: #0a8f41;
-    --primary-hover: #067331;
-    --bg: #f3f4f6;
-    --text: #1b1b1b;
-    --white: #ffffff;
+  --primary: #0a8f41;
+  --primary-hover: #067331;
+  --bg: #f3f4f6;
+  --text: #1b1b1b;
+  --white: #ffffff;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    background: var(--bg);
-    color: var(--text);
+  background-image: url("../Imagens/ifscfundo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;  /* <-- mantém a imagem fixa */
+  /* background: var(--bg); */
+  color: var(--text);
 }
 
 /* ========================= */
 /* HEADER + MENU */
 /* ========================= */
 
-Header{
-    height: 80px;
-    padding: 0;
-    display: flex;
-    margin: 0;
-    background-color: #cacccb;
-    color: rgb(0, 0, 0);
-    text-align: right;
-    font-family: Arial, Helvetica, sans-serif;
-    border-bottom: solid 2px rgb(189, 187, 187);
+header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: #fafafa;
+  border-bottom: solid 2px rgb(218, 215, 215);
 }
 
-
-header picture{
-    align-self: center;
+header picture {
+  margin-left: 10px;
 }
 
-header img{
-    margin-left: 10px;
-    max-width: auto;
-    max-height: 60px;
+header img {
+  max-height: 60px;
 }
 
 .menu {
-    align-self: center;
-    margin-left: 827px;
-    margin-right: 5px;
-    display: flex;
-    background-color: #cacccb;
-    padding: -30px;
-    gap: 30px;
-    justify-content: center;
-    list-style: none;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: 20px;
+  display: flex;
+  gap: 30px;
+  list-style: none;
 }
 
 .menu a {
-    display: block;
-    padding: 12px 20px;
-    color:rgba(0, 173, 3, 0.945);
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s, color 0.3s;
+  display: block;
+  padding: 12px 20px;
+  color: rgba(0, 173, 3, 0.945);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 .menu a:hover {
-    background-color: #009714;
-    color: white;
-    font-weight: bolder;
-} 
+  background-color: #009714;
+  color: white;
+  font-weight: bolder;
+}
 
 /* ========================= */
 /* TÍTULO PRINCIPAL */
 /* ========================= */
 
 .titulossubpaginas {
-    margin-top: 2rem;
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.menuAtual{
+    color:#ffffff;
+    background-color: #cacccb;;
+}
+/* ========================= */
+/* CONTAINERS DE TÓPICOS */
+/* ========================= */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+  padding: 3rem 1.5rem;
+}
+
+.topic {
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  max-width: 750px;
+  padding: 2rem;
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: all 0.7s ease;
+}
+
+.topic.active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.topic h2 {
+  color: var(--primary);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.topic p,
+.topic li {
+  font-size: 1.05rem;
+  line-height: 1.6rem;
 }
 
 /* ========================= */
@@ -96,27 +132,53 @@ header img{
 /* ========================= */
 
 .slide {
-    display: flex;
-    justify-content: center;
-    padding: 3rem 0;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
 }
 
 .content {
-    text-align: center;
-    max-width: 750px;
-    padding: 0 1.5rem;
+  text-align: center;
+  max-width: 750px;
+  padding: 0 1.5rem;
 }
 
 .content h2 {
-    font-size: 1.9rem;
-    margin: 2rem 0 1rem;
-    font-weight: 600;
+  font-size: 1.9rem;
+  margin: 2rem 0 1rem;
+  font-weight: 600;
 }
 
 .content h3 {
-    font-size: 1.1rem;
-    line-height: 1.6rem;
-    font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+/* ========================= */
+/* LISTAS PERSONALIZADAS */
+/* ========================= */
+
+.lista-verde {
+  text-align: left;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.lista-verde li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+}
+
+.lista-verde li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
 }
 
 /* ========================= */
@@ -124,43 +186,42 @@ header img{
 /* ========================= */
 
 .hex-gallery {
-    margin-top: 2.5rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2.5rem;
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
 }
 
 .membro {
-    text-align: center;
+  text-align: center;
 }
 
-/* Hexágono */
 .hex {
-    width: 170px;
-    height: 170px;
-    clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
-    overflow: hidden;
-    background: var(--white);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: 0.4s;
+  width: 170px;
+  height: 170px;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: 0.4s;
 }
 
 .hex:hover {
-    transform: scale(1.07);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+  transform: scale(1.07);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
 }
 
 .hex img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .membro h4 {
-    margin-top: 0.8rem;
-    font-weight: 600;
-    font-size: 1rem;
+  margin-top: 0.8rem;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 /* ========================= */
@@ -168,6 +229,12 @@ header img{
 /* ========================= */
 
 @media (max-width: 600px) {
-    .titulossubpaginas { font-size: 2rem; }
-    .hex { width: 120px; height: 120px; }
+  .titulossubpaginas {
+    font-size: 2rem;
+  }
+
+  .hex {
+    width: 120px;
+    height: 120px;
+  }
 }

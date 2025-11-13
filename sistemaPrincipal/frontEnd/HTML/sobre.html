@@ -1,75 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author"   content="Anthony, Eloiza e Mateus">
-        <title>Página Sobre</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Anthony, Eloiza e Mateus" />
+    <title>Página Sobre</title>
 
-        <link rel="stylesheet" type="text/css" href="../CSS/geral.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    </head>
+    <link rel="stylesheet" href="../CSS/geral.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  </head>
 
   <body>
-
-
     <header>
       <picture>
-          <img src="../Imagens/logoIFSCcoloridaComprida.png" alt="ifsc">
+        <img src="../Imagens/logoIFSCcoloridaComprida.png" alt="Logo do IFSC" />
       </picture>
       <ul class="menu">
-          <li><p><a class="menuItem" href="../index.html">Início</a></p></li>
-          <li><p><a class="menuItem" href="sobre.html">Sobre</a></p></li>
-          <li><p><a class="menuItem" href="mabel.html">MABEL</a></p></li>
-          <li><p><a class="menuItem" href="ptqa.html">PTQA</a></p></li>
+        <li><p><a href="../index.html">Início</a></p></li>
+        <li><p><a href="sobre.html" class="ativo">Sobre</a></p></li>
+        <li><p><a href="mabel.html">MABEL</a></p></li>
+        <li><p><a href="ptqa.html">PTQA</a></p></li>
       </ul>
-  </header>
+    </header>
 
     <h1 class="titulossubpaginas">SOBRE</h1>
 
     <main class="slide">
       <div class="content">
-        
-        <h2>O PROJETO</h2>
 
-        <h3>
-          O projeto trata-se de um protótipo que abriga informações baseadas <br>
-          em um banco de dados de dois monitoramentos distintos: o Mabel, <br>
-          monitoramento da colmeia artificial, e o PTQA, monitoramento da <br>
-          qualidade do ar no IFSC — câmpus Chapecó.
-        </h3>
+        <!-- Cada seção agora é um container independente -->
+        <section class="topic">
+          <h2>O PROJETO</h2>
+          <p>
+            O projeto trata-se de um protótipo que abriga informações baseadas
+            em um banco de dados de dois monitoramentos distintos: o <strong>MABEL</strong>,
+            monitoramento da colmeia artificial, e o <strong>PTQA</strong>, monitoramento da
+            qualidade do ar no IFSC — câmpus Chapecó.
+          </p>
+        </section>
 
-        <h2>NÓS</h2>
-          <section class="hex-gallery">
+        <section class="topic">
+          <h2>Objetivos do Projeto</h2>
+          <ul class="lista-verde">
+            <li>Promover o uso de tecnologias livres e de baixo custo no monitoramento ambiental.</li>
+            <li>Integrar o ensino, a pesquisa e a extensão no desenvolvimento de soluções sustentáveis.</li>
+            <li>Contribuir com dados que auxiliem pesquisadores e a comunidade na preservação ambiental.</li>
+            <li>Estimular o aprendizado prático de programação, eletrônica e análise de dados entre os estudantes.</li>
+          </ul>
+        </section>
+
+        <section class="topic">
+          <h2>Funcionamento Geral</h2>
+          <p>
+            Cada sistema utiliza sensores conectados a uma placa <strong>Arduino</strong>, responsável pela coleta dos dados ambientais. <br><br>
+            As informações são enviadas a um <strong>servidor web na nuvem</strong>, onde são armazenadas e processadas em um <strong>banco de dados MySQL</strong>. <br><br>
+            A interface web, desenvolvida com <strong>HTML, CSS e JavaScript</strong>, exibe dashboards com gráficos e indicadores atualizados em tempo real. <br><br>
+            O backend, feito em <strong>PHP</strong>, permite comunicação entre o hardware e o banco de dados.
+          </p>
+        </section>
+
+        <section class="topic">
+          <h2>Importância Científica e Social</h2>
+          <p>
+            O monitoramento ambiental é essencial para compreender os impactos das ações humanas sobre os ecossistemas. <br><br>
+            No caso do <strong>MABEL</strong>, os dados obtidos ajudam a preservar espécies de abelhas nativas, fundamentais para a polinização e manutenção da biodiversidade. <br><br>
+            O <strong>PTQA</strong> fornece informações que podem orientar políticas locais de saúde e sustentabilidade, ampliando a conscientização sobre a qualidade do ar e seus efeitos na população.
+          </p>
+        </section>
+
+        <section class="topic">
+          <h2>Tecnologias Utilizadas</h2>
+          <ul class="lista-verde">
+            <li><strong>Front-end:</strong> HTML5, CSS3 e JavaScript.</li>
+            <li><strong>Back-end:</strong> PHP.</li>
+            <li><strong>Banco de Dados:</strong> MySQL.</li>
+            <li><strong>Ambiente de Desenvolvimento:</strong> Visual Studio Code e XAMPP.</li>
+            <li><strong>Controle de Versão:</strong> Git e GitHub.</li>
+          </ul>
+        </section>
+
+        <section class="topic">
+          <h2>Equipe e Desenvolvimento</h2>
+          <p>
+            O protótipo está sendo desenvolvido de forma incremental durante o módulo IV da disciplina de Programação. <br><br>
+            As atualizações e novas funcionalidades serão implementadas conforme os requisitos forem sendo refinados. <br><br>
+            O trabalho é colaborativo, com cada integrante responsável por uma parte do sistema — desde a codificação até o design e a documentação.
+          </p>
+        </section>
+
+        <section class="topic">
+          <h2>NÓS</h2>
+          <div class="hex-gallery">
             <div class="membro">
-              <div class="hex">
-                <img src="../Imagens/foto_elo2.jpeg" alt="Eloiza">
-              </div>
+              <div class="hex"><img src="../Imagens/foto_elo2.jpeg" alt="Eloiza"></div>
               <h4>Eloiza Teodoro De Carli</h4>
             </div>
-          
             <div class="membro">
-              <div class="hex">
-                <img src="../Imagens/imagemmeramenteparaTESTE.jpg" alt="Anthony">
-              </div>
-              <h4>Anthony Testa Hghentes</h4>
+              <div class="hex"><img src="../Imagens/fotoanthony.png" alt="Anthony"></div>
+              <h4>Anthony Testa Hentges</h4>
             </div>
-          
             <div class="membro">
-              <div class="hex">
-                <img src="../Imagens/imagemmeramenteparaTESTE.jpg" alt="Mateus">
-              </div>
+              <div class="hex"><img src="../Imagens/fotomateus.jpeg" alt="Mateus"></div>
               <h4>Mateus Furlan</h4>
             </div>
-          </section>
-        
+          </div>
+        </section>
 
       </div>
-      
     </main>
 
     <script src="../JS/sobre.js" defer></script>
