@@ -18,6 +18,7 @@
 }
 
 body {
+  box-shadow: inset;
   background-image: url("../Imagens/ifscfundo.jpg");
   background-size: cover;
   background-position: center;
