@@ -231,6 +231,86 @@ header img {
   font-size: 1rem;
 }
 
+
+/* ========================= */
+/* FORMULÁRIOS */
+/* ========================= */
+/* Container geral */
+.filter-container {
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Título */
+.filter-container h2 {
+  margin-bottom: 12px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2a2a2a;
+}
+
+/* Form */
+.filter-form {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+/* Labels + Inputs */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.input-group input {
+  padding: 10px 12px;
+  width: 180px;
+  border: 2px solid #e0c15c; /* amarelo mel suave */
+  border-radius: 10px;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #f0b400; /* amarelo mais chamativo */
+  box-shadow: 0 0 5px rgba(240, 180, 0, 0.5);
+}
+
+/* Botão */
+.btn-filter {
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #f5c542, #e6a800);
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-filter:hover {
+  background: linear-gradient(90deg, #ffd75c, #f0b400);
+  transform: translateY(-2px);
+}
+
+/* Mensagem de erro */
+.error-msg {
+  margin-top: 10px;
+  color: #b00000;
+  font-weight: 600;
+}
+
+
 /* ========================= */
 /* RESPONSIVO */
 /* ========================= */

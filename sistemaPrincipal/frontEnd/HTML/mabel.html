@@ -8,6 +8,9 @@
         <meta name="author"   content="Anthony, Eloiza e Mateus">
         <title>MABEL</title>
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../CSS/geral.css">
         
     </head>
@@ -25,14 +28,27 @@
             </ul>
         </header>
 
-        <form method="post">
-            <label for="Filme">Filtro</label>
-            <input type="date" id="data_inicio" name="data_inicio" required>
-            <input type="date" id="data_fim" name="data_fim" required>
-            <button type="submit" id="filtrar" name="filtrar" >Filtrar</button>
-        </form>
+        <div class="filter-container">
+            <h2>Filtro</h2>
+        
+            <form id="filterForm" class="filter-form">
+                <div class="input-group">
+                    <label for="data_inicio">Data inicial</label>
+                    <input type="date" id="data_inicio" name="data_inicio" required>
+                </div>
+        
+                <div class="input-group">
+                    <label for="data_fim">Data final</label>
+                    <input type="date" id="data_fim" nome="data_fim" required>
+                </div>
+        
+                <button type="submit" class="btn-filter">Filtrar</button>
+            </form>
+        
+            <p id="errorMsg" class="error-msg"></p>
+        </div>
+        
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="../JS/mabel.js" defer></script>
     </body>
 </html>
