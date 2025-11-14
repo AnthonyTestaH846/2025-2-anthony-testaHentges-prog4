@@ -1,8 +1,7 @@
 /*reactbits.dev
     Site com animações com código pronto!!!*/
-Header{
+/* Header{
     height: 80px;
-    padding: 0;
     display: flex;
     margin: 0;
     background-color: #fafafa;
@@ -10,6 +9,9 @@ Header{
     text-align: right;
     font-family: Arial, Helvetica, sans-serif;
     border-bottom: solid 2px rgb(213, 211, 211);
+    padding: 5px 10px; 
+    display: flex;
+    align-items: center;
 }
 
 header picture{
@@ -20,8 +22,23 @@ header img{
     margin-left: 10px;
     max-width: auto;
     max-height: 60px;
-}
+} */
 
+header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+    border-bottom: solid 2px rgb(218, 215, 215);
+  }
+  
+  header picture {
+    margin-left: 10px;
+  }
+  
+  header img {
+    max-height: 60px;
+  }
 
 footer{
     display: flex;
@@ -106,6 +123,7 @@ section{
 #logoifscfooter{
     max-width: 150px;
     max-height: 150px;
+    margin-top: 5px;
 } 
 
 #imagemifscdiv{
@@ -178,6 +196,7 @@ body {
     top: 0;
     bottom: 0;
     z-index: -1;
+    box-shadow: 10px 10px 5px rgb(71, 71, 71);
  }
 .icon {
     font-size: 2rem;
@@ -192,6 +211,7 @@ body {
     font-family: "Bowlby One SC, sans-serif";
     font-weight: bold;
     color: white;
+    text-shadow: 5px 5px 10px rgba(41, 41, 41, 0.7); /* Sombra mais suave */
 }
 
 .credits {
@@ -229,6 +249,7 @@ a .hex {
     overflow: hidden;
     background-color: var(--white);
     box-shadow: 0 5px 8px rgb(0, 0, 0);
+
 }
 
 .hex:hover {
