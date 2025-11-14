@@ -5,9 +5,9 @@ SELECT
     datainclusao AS Data,
     AVG(hi) AS Umidade_Media_Diaria
 FROM
-    leituraptqa
+    leituramabel
 WHERE
-    CONCAT(datainclusao, ' ', horainclusao) BETWEEN 'YYYY-MM-DD HH:MM:SS' AND 'YYYY-MM-DD HH:MM:SS'
+    CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME) BETWEEN :data_inicio AND :data_fim
 GROUP BY
     datainclusao
 ORDER BY
