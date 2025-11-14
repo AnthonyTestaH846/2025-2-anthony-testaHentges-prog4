@@ -58,7 +58,7 @@ header img {
 .menu a {
   display: block;
   padding: 12px 20px;
-  color: rgba(0, 173, 3, 0.945);
+  color:#c69709;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
@@ -66,7 +66,7 @@ header img {
 }
 
 .menu a:hover {
-  background-color: #009714;
+  background-color: #c69709;
   color: white;
   font-weight: bolder;
 }
@@ -81,11 +81,17 @@ header img {
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: 1px;
+  color:#009714
 }
 
-.menuAtual{
-    color:#ffffff;
-    background-color: #cacccb;;
+.ativo{
+  display: block;
+  padding: 12px 20px;
+  color:#c69709;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 /* ========================= */
 /* CONTAINERS DE TÓPICOS */

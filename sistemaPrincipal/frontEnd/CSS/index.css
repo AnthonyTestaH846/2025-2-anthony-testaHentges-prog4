@@ -223,7 +223,7 @@ body {
 }
 
 a .hex {
-    width: 250px;
+    width: 200px;
     aspect-ratio: 1 / 1;
     clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
     overflow: hidden;
@@ -246,27 +246,31 @@ a .hex {
     object-fit: cover;
 }
 
-/* Galeria hexagonal (formato de triângulo) */
+/* Galeria hexagonal em forma de triângulo */
 .hex-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem; /* distância reduzida */
-    position: relative;
+    gap: 1.2rem;
+    place-items: center;
+    width: 100%;
 }
 
-/* Hexágonos em forma de triângulo */
-a .hex:nth-child(1) {
+/* Primeiro hex — centralizado em cima */
+.hex-gallery a:nth-child(1) {
     grid-column: 1 / span 2;
     justify-self: center;
 }
 
-a .hex:nth-child(2) {
+/* Segundo hex — canto direito */
+.hex-gallery a:nth-child(2) {
     justify-self: end;
 }
 
-a .hex:nth-child(3) {
+/* Terceiro hex — canto esquerdo */
+.hex-gallery a:nth-child(3) {
     justify-self: start;
 }
+
 
 /* Responsividade — telas menores (como celulares) */
 /* Responsividade — telas menores (como celulares) */
