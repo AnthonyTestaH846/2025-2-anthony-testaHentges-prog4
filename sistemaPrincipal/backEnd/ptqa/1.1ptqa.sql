@@ -8,6 +8,6 @@ SELECT
 FROM
     leituraptqa
 WHERE
-    CONCAT(dataleitura, ' ', horaleitura) BETWEEN 'YYYY-MM-DD HH:MM:SS' AND 'YYYY-MM-DD HH:MM:SS'
+    CONCAT(dataleitura, ' ', horaleitura) BETWEEN :data_inicio AND :data_fim
 ORDER BY
     dataleitura ASC, horaleitura ASC;
