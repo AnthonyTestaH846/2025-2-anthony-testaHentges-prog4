@@ -197,6 +197,7 @@ body {
     bottom: 0;
     z-index: -1;
     box-shadow: 10px 10px 5px rgb(71, 71, 71);
+    zoom: 100px;
  }
 .icon {
     font-size: 2rem;
