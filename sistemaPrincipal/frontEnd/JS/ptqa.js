@@ -11,5 +11,15 @@
       return
     }
 
+    else{
+        fetch("../../backEnd/ptqa.php")
+        .then(res =>   {
+            console.log("RES (raw HTTP Response):", res);
+            return res.json();
+        })
+        .then(data =>{
+        })
+    }
+
     error.textContent = "";
 });
