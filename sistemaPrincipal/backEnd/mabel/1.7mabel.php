@@ -1,4 +1,7 @@
 <?php
+
+# Exibir umidade e temperatura, interna e externa, realizadas em um dia específico
+
 header('Content-Type: application/json; charset=utf-8');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -13,11 +16,20 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, ROUND(AVG(eco2),2) AS media_co2
-        FROM leituraptqa
-        WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
-        GROUP BY dataleitura
-        ORDER BY dataleitura ASC";
+$sql = "
+SELECT
+    datahora,
+    ti,
+    te,
+    hi,
+    he
+FROM
+    leituramabel;
+WHERE
+    DATE(datahora) = CURDATE()
+ORDER BY
+    datahora ASC;
+";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

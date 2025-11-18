@@ -1,4 +1,7 @@
 <?php
+
+# Listar a média diária da temperatura interna em um período específico de tempo. Aplicar filtro, cláusula where
+
 header('Content-Type: application/json; charset=utf-8');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -13,11 +16,22 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, ROUND(AVG(eco2),2) AS media_co2
-        FROM leituraptqa
-        WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
-        GROUP BY dataleitura
-        ORDER BY dataleitura ASC";
+$sql = "
+SELECT DATE(datahora)
+    AS datainclusao, AVG(ti)
+    AS media_diaria_ti 
+FROM 
+    leituramabel
+WHERE 
+    datahora
+BETWEEN
+    :data_inicio
+    AND :data_fim
+GROUP BY
+    datainclusao
+ORDER BY
+    datainclusao ASC;
+";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

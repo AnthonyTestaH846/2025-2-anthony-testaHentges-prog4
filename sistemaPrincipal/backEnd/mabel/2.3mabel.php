@@ -1,4 +1,7 @@
 <?php
+
+# Calcular a umidade interna média da colméia em um período específico de tempo. Aplicar filtro, cláusula where
+
 header('Content-Type: application/json; charset=utf-8');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -13,11 +16,17 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, ROUND(AVG(eco2),2) AS media_co2
-        FROM leituraptqa
-        WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
-        GROUP BY dataleitura
-        ORDER BY dataleitura ASC";
+$sql = "
+SELECT AVG(hi)
+    AS media_te
+FROM
+    leituramabel
+WHERE
+    datahora
+BETWEEN
+    :data_inicio
+    AND :data_fim;
+";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
