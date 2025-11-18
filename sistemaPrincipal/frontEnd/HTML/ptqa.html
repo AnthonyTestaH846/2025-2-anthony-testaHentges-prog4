@@ -26,6 +26,26 @@
             </ul>
         </header>
 
+        <div class="filter-container">
+            <h2>Filtro</h2>
+        
+            <form id="filterForm" class="filter-form">
+                <div class="input-group">
+                    <label for="data_inicio">Data inicial</label>
+                    <input type="date" id="data_inicio" name="data_inicio" required>
+                </div>
+        
+                <div class="input-group">
+                    <label for="data_fim">Data final</label>
+                    <input type="date" id="data_fim" nome="data_fim" required>
+                </div>
+        
+                <button type="submit" class="btn-filter">Filtrar</button>
+            </form>
+        
+            <p id="errorMsg" class="error-msg"></p>
+        </div>
+
         <script src="../JS/ptqa.js" defer></script>
     </body>
 

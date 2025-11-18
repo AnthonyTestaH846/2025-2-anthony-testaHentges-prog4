@@ -1,10 +1,15 @@
-// Menu selecionado
-const menuItems = document.querySelectorAll('.menu-item');
+  //Formulário
+  document.getElementById("filterForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-menuItems.forEach(item => {
-    item.addEventListener('click', () => {
-        menuItems.forEach(i => i.classList.remove('selected'));
-        
-        item.classList.add('selected');
-    });
+    const start = new Date(document.getElementById("data_inicio").value);
+    const end = new Date(document.getElementById("data_fim").value);
+    const error = document.getElementById("errorMsg");
+
+    if (start > end) {
+      alert("A data inicial não pode ser maior que a data final.");
+      return
+    }
+
+    error.textContent = "";
 });
