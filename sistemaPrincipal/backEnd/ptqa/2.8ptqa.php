@@ -16,16 +16,18 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
-    AVG(eco2) AS media_CO2_diaria
+    dataleitura AS data_leitura,
+    ROUND(AVG(eco2), 1) AS media_CO2_PPM
 FROM
     leituraptqa
 WHERE
-    STRFTIME('%Y-%m', dataleitura) = 'YYYY-MM' -- Filtragem pelo mês, ajuste a função conforme o SGBD
+    dataleitura >= DATE_FORMAT(:ano_mes, '%Y-%m-01')
+    
+    AND dataleitura <= LAST_DAY(DATE_FORMAT(:ano_mes, '%Y-%m-01'))
 GROUP BY
-    Dia
+    dataleitura
 ORDER BY
-    Media_CO2_Diaria DESC
+    media_CO2_PPM DESC
 LIMIT 5;
 ";
 
