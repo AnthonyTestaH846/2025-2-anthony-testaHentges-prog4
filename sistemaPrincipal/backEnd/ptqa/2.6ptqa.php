@@ -16,9 +16,9 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    MAX(temperatura) AS Temperatura_Maxima,
-    MIN(temperatura) AS Temperatura_Minima,
-    AVG(temperatura) AS Temperatura_Media
+    ROUND(MAX(temperatura), 1) AS temperatura_maxima,
+    ROUND(MIN(temperatura), 1) AS temperatura_minima,
+    ROUND(AVG(temperatura), 1) AS temperatura_media
 FROM
     leituraptqa
 WHERE

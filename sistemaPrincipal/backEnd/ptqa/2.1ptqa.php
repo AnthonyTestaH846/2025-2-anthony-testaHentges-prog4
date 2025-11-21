@@ -16,7 +16,7 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    AVG(temperatura) AS Temperatura_Media
+    ROUND(AVG(temperatura), 1) AS temperatura_media
 FROM
     leituraptqa
 WHERE

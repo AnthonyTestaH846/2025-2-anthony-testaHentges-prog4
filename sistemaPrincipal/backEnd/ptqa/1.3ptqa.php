@@ -15,7 +15,9 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    dataleitura, horaleitura, umidade
+    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
+    horaleitura AS hora_leitura,
+    ROUND(umidade, 1) AS umidade
 FROM
     leituraptqa
 WHERE

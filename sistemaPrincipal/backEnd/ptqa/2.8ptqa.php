@@ -16,8 +16,8 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    dataleitura AS Dia,
-    AVG(eco2) AS Media_CO2_Diaria
+    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
+    AVG(eco2) AS media_CO2_diaria
 FROM
     leituraptqa
 WHERE

@@ -16,7 +16,9 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-        dataleitura, horaleitura, tvoc
+        DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
+        horaleitura AS hora_leitura,
+        ROUND(tvoc, 1) AS gases_volateis
 FROM
     leituraptqa
 WHERE
