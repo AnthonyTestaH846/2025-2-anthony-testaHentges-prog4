@@ -295,6 +295,7 @@ footer ul{
 /* Título */
 .filter-container h2 {
   margin-bottom: 12px;
+  margin-top: -22px;
   font-size: 28px;
   font-weight: 700;
   color: #2a2a2a;
@@ -306,6 +307,53 @@ footer ul{
   gap: 16px;
   flex-wrap: wrap;
   align-items: flex-end;
+}
+
+.graphic-container {
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Título */
+.graphic-container h2 {
+  margin-bottom: 12px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2a2a2a;
+}
+
+.graphic-form {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  padding: 10px 40px 10px 15px;
+  
+  border: 2px solid #e0c15c; 
+  
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+  width: 100%;
+  max-width: 400px; 
+  cursor: pointer;
+  outline: none; 
+  transition: border-color 0.3s, box-shadow 0.3s;
+  
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23c89709' d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center; 
+  background-size: 16px;
+}
+
+.graphic-form:focus {
+  border-color: #c89709; 
+  box-shadow: 0 0 0 3px rgba(200, 151, 9, 0.4); 
+}
+
+.graphic-form:hover {
+  border-color: #c89709;
 }
 
 /* Labels + Inputs */

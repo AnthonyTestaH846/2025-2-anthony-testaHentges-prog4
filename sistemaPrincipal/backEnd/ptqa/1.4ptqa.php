@@ -15,7 +15,9 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    dataleitura, horaleitura, eco2
+    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
+    horaleitura AS hora_leitura,
+    eco2 AS concentracao_gas_carbonico
 FROM
     leituraptqa
 WHERE

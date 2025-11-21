@@ -16,8 +16,8 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    aqi AS Indice_Qualidade_Ar,
-    AVG(tvoc) AS Media_Gases_Volateis
+    aqi AS indice_qualidade_ar,
+    ROUND(AVG(tvoc), 1) AS media_gases_volateis
 FROM
     leituraptqa
 WHERE

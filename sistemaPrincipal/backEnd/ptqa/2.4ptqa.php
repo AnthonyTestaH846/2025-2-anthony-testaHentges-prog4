@@ -16,8 +16,8 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    dataleitura AS Data,
-    MIN(pressao) AS Minima_Pressao_Diaria
+    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
+    MIN(ROUND(pressao, 1)) AS minima_pressao_diaria
 FROM
     leituraptqa
 WHERE

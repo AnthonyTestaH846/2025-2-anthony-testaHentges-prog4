@@ -15,7 +15,9 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    dataleitura, horaleitura, aqi
+    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
+    horaleitura AS hora_leitura, 
+    aqi AS indice_qualidade_ar
 FROM
     leituraptqa
 WHERE

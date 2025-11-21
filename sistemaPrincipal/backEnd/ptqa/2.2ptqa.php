@@ -16,8 +16,8 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT
-    dataleitura AS Data,
-    AVG(umidade) AS Umidade_Media_Diaria
+    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
+    ROUND(AVG(umidade), 1) AS umidade_Media_Diaria
 FROM
     leituraptqa
 WHERE
