@@ -4,24 +4,24 @@ let dataFinal = document.getElementById("dataFinal");
 let paragrafoErroGrafico = document.getElementById("pErro");
 
 let opcao = document.getElementsByClassName("opcao");
-let valorOpcao = opaco.value;
+let valorOpcao = opcao.value;
 let endereco = ""
 
 
 function caminhoDoArquivo(){
-    if(valorOpcao == 1){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/1.2ptqa.php"; return;}
-    else if (valorOpcao == 2){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/1.3ptqa.php"; return;}
-    else if (valorOpcao == 3){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/1.4ptqa.php"; return;}
-    else if (valorOpcao == 4){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/1.5ptqa.php"; return;}
-    else if (valorOpcao == 5){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/1.6ptqa.php"; return;}
-    else if (valorOpcao == 6){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/2.1ptqa.php"; return;}
-    else if (valorOpcao == 7){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/2.2ptqa.php"; return;}
-    else if (valorOpcao == 8){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/2.3ptqa.php"; return;}
-    else if (valorOpcao == 9){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/2.4ptqa.php"; return;}
-    else if (valorOpcao == 10){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/2.5ptqa.php"; return;}
-    else if (valorOpcao == 11){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/2.6ptqa.php"; return;}
-    else if (valorOpcao == 12){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/2.7ptqa.php"; return;}
-    else if (valorOpcao == 13){endereco = "http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/ptqa/2.8ptqa.php"; return;}
+    if(valorOpcao == 1){endereco = "http://localhost/sistemaPrincipal/backEnd/ptqa/1.2ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 2){endereco = "http://localhost/backEnd/ptqa/1.3ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 3){endereco = "http://localhost/backEnd/ptqa/1.4ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 4){endereco = "http://localhost/backEnd/ptqa/1.5ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 5){endereco = "http://localhost/backEnd/ptqa/1.6ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 6){endereco = "http://localhost/backEnd/ptqa/2.1ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 7){endereco = "http://localhost/backEnd/ptqa/2.2ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 8){endereco = "http://localhost/backEnd/ptqa/2.3ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 9){endereco = "http://localhost/backEnd/ptqa/2.4ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 10){endereco = "http://localhost/sistemaPrincipal/backEnd/ptqa/2.5ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 11){endereco = "http://localhost/sistemaPrincipal/backEnd/ptqa/2.6ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 12){endereco = "http://localhost/sistemaPrincipal/backEnd/ptqa/2.7ptqa.php"; chamarBackend();}
+    else if (valorOpcao == 13){endereco = "http://localhost/sistemaPrincipal/backEnd/ptqa/2.8ptqa.php"; chamarBackend();}
 }
 
 
@@ -46,7 +46,7 @@ function chamarBackend(event) {
     // limpa erro se estiver tudo OK
     paragrafoErroGrafico.innerText = "";
 
-    let url = endereco+`?dataInicial=${valorDataInicial}&dataFinal=${valorDataFinal}`;
+    let url = endereco + `?dataInicial=${valorDataInicial}&dataFinal=${valorDataFinal}`;
 
     console.log("URL chamada:", url);
 
@@ -96,4 +96,4 @@ function criarGrafico(){
             }
         })
 }
-botaoData.addEventListener("click", chamarBackend);
+botaoData.addEventListener("click", caminhoDoArquivo());
