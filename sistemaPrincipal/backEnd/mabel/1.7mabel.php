@@ -26,9 +26,10 @@ SELECT
 FROM
     leituramabel;
 WHERE
-    DATE(datahora) = CURDATE()
-ORDER BY
-    datahora ASC;
+    datahora
+BETWEEN
+    :data_inicio
+    AND :data_fim;
 ";
 
 $stmt = $conecta->prepare($sql);
