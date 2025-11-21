@@ -27,10 +27,10 @@
             </ul>
         </header>
 
-        <div class="filter-container">
-            <h2>Selecione tipo de gráfico a ser gerado:</h2>
+        <div class="graphic-container">
+            <h2>Gráfico</h2>
 
-            <select >
+            <select id="graphicForm" class="graphic-form">
                 <option value="1">Baixa qualidade do ar registrada</option>
                 <option value="2">Umidade maior que 70% registrada</option>
                 <option value="3">CO2 acima que 1000pm registrada</option>
@@ -46,7 +46,10 @@
                 <option value="13">Cinco dias com maior média de concentração de gás carbonico</option>
             </select>
 
-            <h2>Selecione a data a ser considerada no gráfico:</h2>
+        </div>
+
+        <div class="filter-container">
+            <h2>Filtro</h2>
 
             <form id="filterForm" class="filter-form">
                 <div class="input-group">
