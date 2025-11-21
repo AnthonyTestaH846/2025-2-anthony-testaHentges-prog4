@@ -17,8 +17,9 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "
-SELECT datahora
-FROM   leituramabel;
+SELECT DATE_FORMAT(STR_TO_DATE(datahora, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS data_hora,
+DATE_FORMAT(STR_TO_DATE(dataInclusao, '%Y-%m-%d'), '%d/%m/%Y') AS data_inclusao
+FROM leituramabel;
 WHERE
     datahora
 BETWEEN
