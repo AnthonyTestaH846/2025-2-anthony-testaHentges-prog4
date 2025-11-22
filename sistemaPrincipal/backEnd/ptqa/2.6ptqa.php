@@ -15,6 +15,10 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
+// transformar para formato DATETIME
+$dataInicio  = $dataInicial . " 00:00:00";
+$dataFim     = $dataFinal   . " 23:59:59";
+
 $sql = "SELECT
     ROUND(MAX(temperatura), 1) AS temperatura_maxima,
     ROUND(MIN(temperatura), 1) AS temperatura_minima,
@@ -27,11 +31,11 @@ WHERE
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
-    ':dataInicial' => $dataInicial,
-    ':dataFinal'   => $dataFinal
+    ':data_inicio' => $dataInicio,
+    ':data_fim'    => $dataFim
 ]);
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($resultado);
+echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ?>

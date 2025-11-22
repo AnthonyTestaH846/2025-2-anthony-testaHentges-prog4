@@ -1,5 +1,4 @@
 <?php
-
 # Calcular a umidade externa média da colméia em um período específico de tempo. Aplicar filtro, cláusula where
 
 header('Content-Type: application/json; charset=utf-8');
@@ -16,8 +15,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "
-SELECT AVG(he)
+// transformar para formato DATETIME
+$dataInicio  = $dataInicial . " 00:00:00";
+$dataFim     = $dataFinal   . " 23:59:59";
+
+$sql = "SELECT AVG(he)
     AS media_te
 FROM
     leituramabel
@@ -30,11 +32,11 @@ BETWEEN
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
-    ':dataInicial' => $dataInicial,
-    ':dataFinal'   => $dataFinal
+    ':data_inicio' => $dataInicio,
+    ':data_fim'    => $dataFim
 ]);
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($resultado);
+echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ?>

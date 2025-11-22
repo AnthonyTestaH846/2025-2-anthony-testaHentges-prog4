@@ -1,5 +1,4 @@
 <?php
-
 # Exibir as temperaturas externas registradas na colmeia. Campo “te”
 
 header('Content-Type: application/json; charset=utf-8');
@@ -16,9 +15,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "
+// transformar para formato DATETIME
+$dataInicio  = $dataInicial . " 00:00:00";
+$dataFim     = $dataFinal   . " 23:59:59";
 
-SELECT datahora, te
+$sql = "SELECT datahora, te
 FROM   leituramabel;
 WHERE
     datahora
@@ -30,11 +31,11 @@ BETWEEN
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
-    ':dataInicial' => $dataInicial,
-    ':dataFinal'   => $dataFinal
+    ':data_inicio' => $dataInicio,
+    ':data_fim'    => $dataFim
 ]);
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($resultado);
+echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ?>
