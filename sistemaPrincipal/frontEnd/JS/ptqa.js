@@ -1,14 +1,25 @@
+let graficoAtual = null;
+
+let paragrafoErroGrafico = document.getElementById("errorMsg");
 let botaoData = document.getElementById("botaoData");
-let dataInicial = document.getElementById("dataInicial");
-let dataFinal = document.getElementById("dataFinal");
-let paragrafoErroGrafico = document.getElementById("pErro");
+let dataInicial;
+let dataFinal;
+let valorOpcao = null;
 
-let opcao = document.getElementsByClassName("opcao");
-let valorOpcao = opcao.value;
-let endereco = ""
 
+let endereco = "";
+let url = ``;
+
+botaoData.addEventListener("click", caminhoDoArquivo);
 
 function caminhoDoArquivo(){
+    dataInicial = document.getElementById("dataInicial");
+    dataFinal = document.getElementById("dataFinal");
+    let opcao = document.getElementById("opcao");
+    valorOpcao = opcao.value;
+
+
+
     if(valorOpcao == 1){endereco = "http://localhost/sistemaPrincipal/backEnd/ptqa/1.2ptqa.php"; chamarBackend();}
     else if (valorOpcao == 2){endereco = "http://localhost/backEnd/ptqa/1.3ptqa.php"; chamarBackend();}
     else if (valorOpcao == 3){endereco = "http://localhost/backEnd/ptqa/1.4ptqa.php"; chamarBackend();}
@@ -27,7 +38,7 @@ function caminhoDoArquivo(){
 
 
 function chamarBackend(event) {
-    event.preventDefault(); // Impede o form de recarregar a página
+ // Impede o form de recarregar a página
 
     let valorDataInicial = dataInicial.value;
     let valorDataFinal = dataFinal.value;
@@ -46,7 +57,7 @@ function chamarBackend(event) {
     // limpa erro se estiver tudo OK
     paragrafoErroGrafico.innerText = "";
 
-    let url = endereco + `?dataInicial=${valorDataInicial}&dataFinal=${valorDataFinal}`;
+    url = endereco + `?dataInicial=${valorDataInicial}&dataFinal=${valorDataFinal}`;
 
     console.log("URL chamada:", url);
 
@@ -55,6 +66,8 @@ function chamarBackend(event) {
             
 
 function criarGrafico(){
+    if (graficoAtual) {graficoAtual.destroy();}
+
     fetch(url)
         .then(response => {
             console.log("Resposta bruta:", response);
@@ -68,7 +81,7 @@ function criarGrafico(){
                     const qaMenor4 = data.map(item => item.indice_qualidade_ar);
 
                     const ctx = document.getElementById('graficoPTQA').getContext('2d');
-                    const myChart = new Chart(ctx, {
+                    graficoAtual = new Chart(ctx, {
                         type: 'line',
                         data: {
                             labels: labels,
@@ -94,6 +107,5 @@ function criarGrafico(){
                 console.log("Nenhum dado encontrado.");
                 paragrafoErroGrafico.innerText = "Nenhum dado encontrado."
             }
-        })
+        }).catch(err => console.error("Erro no fetch:", err));
 }
-botaoData.addEventListener("click", caminhoDoArquivo());
