@@ -409,7 +409,20 @@ footer ul{
   font-weight: 600;
 }
 
+/* ========================= */
+/* GRÁFICO */
+/* ========================= */
 
+#graficoPTQA {
+    background-color: linear-gradient(180deg, #fff8d4, #fff);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.planoFundoGrafico{
+  background-color: white;
+}
 /* ========================= */
 /* RESPONSIVO */
 /* ========================= */

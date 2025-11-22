@@ -26,7 +26,7 @@ $sql = "SELECT
 FROM
     leituraptqa
 WHERE
-    aqi >= 4
+    aqi <= 4
     AND CONCAT(dataleitura, ' ', horaleitura) BETWEEN :data_inicio AND :data_fim
 ORDER BY dataleitura, horaleitura;
 ";
@@ -39,5 +39,5 @@ $stmt->execute([
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ?>

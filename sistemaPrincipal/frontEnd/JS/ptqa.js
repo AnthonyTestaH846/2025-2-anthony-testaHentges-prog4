@@ -13,6 +13,7 @@ let url = ``;
 botaoData.addEventListener("click", caminhoDoArquivo);
 
 function caminhoDoArquivo(){
+    event.preventDefault();
     dataInicial = document.getElementById("dataInicial");
     dataFinal = document.getElementById("dataFinal");
     let opcao = document.getElementById("opcao");
@@ -71,36 +72,85 @@ function criarGrafico(){
     fetch(url)
         .then(response => {
             console.log("Resposta bruta:", response);
+            
             return response.json();
         })
         .then(data => {
             console.log("JSON recebido:", data);
             if(data.length > 0) {
-                if(valorOpcao == 1){
-                    const labels = data.map(item => item.data_leitura);
-                    const qaMenor4 = data.map(item => item.indice_qualidade_ar);
+
+                if(valorOpcao == 1){ //QA < 4
+                    
+                    const agrupado = {}; // Agrupa leituras por dia e calcula média diária
+
+                    data.forEach(item => {
+                        if (!agrupado[item.data_leitura]) agrupado[item.data_leitura] = [];
+                        agrupado[item.data_leitura].push(item.indice_qualidade_ar);
+                    });
+
+                    const labels = Object.keys(agrupado);
+                    const qaMenor4 = labels.map(dia => {
+                        const valores = agrupado[dia];
+                        return valores.reduce((a, b) => a + b, 0) / valores.length;
+                    });(item => item.indice_qualidade_ar);
 
                     const ctx = document.getElementById('graficoPTQA').getContext('2d');
-                    graficoAtual = new Chart(ctx, {
+                    // Criando um gradiente bonito para área do gráfico
+                    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                    gradient.addColorStop(0, 'rgba(75, 192, 192, 0.5)');
+                    gradient.addColorStop(1, 'rgba(75, 192, 192, 0)');
+
+                    // Destruir gráfico antigo (caso clique várias vezes)
+                    if (window.graficoAtual) {
+                        window.graficoAtual.destroy();
+                    }
+
+                    window.graficoAtual = new Chart(ctx, {
                         type: 'line',
                         data: {
                             labels: labels,
                             datasets: [{
-                                label: 'Qualidade do AR',
+                                label: 'Qualidade do Ar',
                                 data: qaMenor4,
-                                backgroundColor: 'rgb(132,136,133,1)',
-                                borderColor: 'rgb(75,192,192)',
-                                borderWidth: 1
+                                backgroundColor: gradient,
+                                borderColor: 'rgb(75, 192, 192)',
+                                borderWidth: 3,
+                                pointRadius: 4,
+                                pointBackgroundColor: 'white',
+                                pointBorderColor: 'rgb(75, 192, 192)',
+                                pointHoverRadius: 6,
+                                tension: 0.35
                             }]
                         },
                         options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        font: { size: 14, family: "Arial" },
+                                        color: '#333'
+                                    }
+                                },
+                                tooltip: {
+                                    backgroundColor: 'rgba(0,0,0,0.7)',
+                                    titleFont: { size: 14, weight: 'bold' },
+                                    bodyFont: { size: 13 }
+                                }
+                            },
                             scales: {
+                                x: {
+                                    ticks: { color: '#333', font: { size: 12 } },
+                                    grid: { color: 'rgba(0,0,0,0.05)' }
+                                },
                                 y: {
-                                    beginAtZero: true
+                                    beginAtZero: true,
+                                    ticks: { color: '#333', font: { size: 12 } },
+                                    grid: { color: 'rgba(0,0,0,0.05)' }
                                 }
                             }
                         }
                     });
+
                 }
             }
             else{
