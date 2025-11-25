@@ -24,18 +24,22 @@ const consultas = {
     12: { arquivo: "consulta_umidade_media_ptqa", legenda: "Umidade Média" },
     13: { arquivo: "consulta_umidade_ptqa", legenda: "Umidade" },
 
-    14: { arquivo: "consulta_media_he_mabel", legenda: "Umidade Externa" },
-    15: { arquivo: "consulta_media_hi_mabel", legenda: "Umidade Interna" },
-    16: { arquivo: "consulta_mabel", legenda: "Média CO₂" },
-    17: { arquivo: "consulta_media_he_mabel", legenda: "Umidade Externa Média" },
-    18: { arquivo: "consulta_media_hi_mabel", legenda: "Umidade Interna Média" },
-    19: { arquivo: "consulta_media_te_mabel", legenda: "Temperatura Externa Média" },
-    20: { arquivo: "consulta_media_ti_mabel", legenda: "Temperatura Interna Média" },
-    21: { arquivo: "consulta_media_ti_mabel", legenda: "Temperatura Interna Média" },
-    22: { arquivo: "consulta_ninho_mabel", legenda: "Ninhos" },
-    23: { arquivo: "consulta_ninho_maior_mabel", legenda: "Ninho Maior" },
-    24: { arquivo: "consulta_te_mabel", legenda: "Temperatura Externa" },
-    25: { arquivo: "consulta_ti_te_diferenca_ptqa", legenda: "Diferença TI - TE" }
+    14: { arquivo: "1.2mabel", legenda: "Temperatura Interna" },
+    15: { arquivo: "1.3mabel", legenda: "Temperatura Externa" },
+    16: { arquivo: "1.4mabel", legenda: "Umidade Interna" },
+    17: { arquivo: "1.5mabel", legenda: "Umidade Externa" },
+    18: { arquivo: "1.6mabel", legenda: "Temperatura do Ninho" },
+    19: { arquivo: "1.7mabel", legenda: "Umidade e Temperatura Interna e Externa" },
+    20: { arquivo: "2.1mabel", legenda: "Temperatura Interna Média" },
+    21: { arquivo: "2.2mabel", legenda: "Temperatura Externa Média" },
+    22: { arquivo: "2.3mabel", legenda: "Umidade Interna Média" },
+    23: { arquivo: "2.4mabel", legenda: "Umidade Externa Média" },
+    24: { arquivo: "2.5mabel", legenda: "Temperatura Máxima do Ninho" },
+    25: { arquivo: "2.6mabel", legenda: "Temperatura Mínima do Ninho" },
+    26: { arquivo: "2.7mabel", legenda: "Diferença Média Temperatura Interna e Externa" },
+    27: { arquivo: "2.8mabel", legenda: "Média Diária Temperatura Interna" },
+    28: { arquivo: "2.9mabel", legenda: "Média Diária Umidade Interna" }
+
 };
 
 
