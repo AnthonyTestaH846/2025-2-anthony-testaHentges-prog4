@@ -12,7 +12,7 @@ let url = ``;
 
 botaoData.addEventListener("click", caminhoDoArquivo);
 
-function caminhoDoArquivo(){
+function caminhoDoArquivo(event){
     event.preventDefault();
     dataInicial = document.getElementById("dataInicial");
     dataFinal = document.getElementById("dataFinal");
