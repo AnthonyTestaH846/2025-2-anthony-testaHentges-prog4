@@ -19,8 +19,7 @@ if (!$dataInicial || !$dataFinal) {
 $dataInicio  = $dataInicial . " 00:00:00";
 $dataFim     = $dataFinal   . " 23:59:59";
 
-$sql = "
-SELECT datahora, ti
+$sql = "SELECT datahora, ti
 FROM   leituramabel;
 WHERE
     datahora

@@ -31,22 +31,22 @@
         <div class="graphic-container">
             <h2>Selecione o gráfico desejado</h2>
             
-            <select id="graphicForm" class="graphic-form">
-                <option value="14"  class="opcao">Temperaturas internas registradas</option>
-                <option value="15"  class="opcao">Temperaturas externas registradas</option>
-                <option value="16"  class="opcao">Umidades internas registradas</option>
-                <option value="17"  class="opcao">Umidades externas registradas</option>
-                <option value="18"  class="opcao">Temperatura do ninho</option>
-                <option value="19"  class="opcao">Umidades e temperaturas interna e externa na data atual</option>
-                <option value="20"  class="opcao">Temperatura interna média</option>
-                <option value="21"  class="opcao">Temperatura externa média</option>
-                <option value="22"  class="opcao">Umidade interna média</option>
-                <option value="23" class="opcao">Umidade externa média</option>
-                <option value="24" class="opcao">Temperatura máxima</option>
-                <option value="25" class="opcao">Temperatura mínima</option>
-                <option value="26" class="opcao">Diferença média entre temperatura externa e interna</option>
-                <option value="27" class="opcao">Média diária da temperatura interna</option>
-                <option value="28" class="opcao">Média diária da umidade interna</option>
+            <select id="selectMabel" class="graphic-form">
+                <option value="14" >Temperaturas internas registradas</option>
+                <option value="15" >Temperaturas externas registradas</option>
+                <option value="16" >Umidades internas registradas</option>
+                <option value="17" >Umidades externas registradas</option>
+                <option value="18" >Temperatura do ninho</option>
+                <option value="19" >Umidades e temperaturas interna e externa na data atual</option>
+                <option value="20" >Temperatura interna média</option>
+                <option value="21" >Temperatura externa média</option>
+                <option value="22" >Umidade interna média</option>
+                <option value="23" >Umidade externa média</option>
+                <option value="24" >Temperatura máxima</option>
+                <option value="25" >Temperatura mínima</option>
+                <option value="26" >Diferença média entre temperatura externa e interna</option>
+                <option value="27" >Média diária da temperatura interna</option>
+                <option value="28" >Média diária da umidade interna</option>
             </select>
         </div>
 
@@ -64,13 +64,15 @@
                     <input type="date" id="dataFinal" nome="dataFinal" required>
                 </div>
         
-                <button type="submit" class="btn-filter">Filtrar</button>
+                <button type="submit" id="botaoData" class="btn-filter">Filtrar</button>
             </form>
         
-            <p id="errorMsg" class="error-msg"></p>
+            <p id="pErro" class="error-msg"></p>
         </div>
+
+        <canvas id="graficoGerado"></canvas>
         
-        <script src="path/to/chartjs/dist/chart.umd.min.js"></script>
-        <script src="../JS/mabel.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="../JS/graficos.js" defer></script>
     </body>
 </html>

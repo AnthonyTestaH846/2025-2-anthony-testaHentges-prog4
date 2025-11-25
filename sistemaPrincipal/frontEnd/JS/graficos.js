@@ -1,7 +1,7 @@
 // Inputs 
 let botaoData = document.getElementById("botaoData");
-let dataInicial = document.getElementById("dataInicial");
-let dataFinal = document.getElementById("dataFinal");
+let dataInicial = null;
+let dataFinal = null;
 let paragrafoErroGrafico = document.getElementById("pErro");
 let selectMabel = document.getElementById("selectMabel");
 let selectPTQA = document.getElementById("selectPTQA");
@@ -69,6 +69,9 @@ let graficoAtual = null;
 function chamarBackend(event) {
     event.preventDefault();
 
+    dataInicial = document.getElementById("dataInicial");
+    dataFinal = document.getElementById("dataFinal");
+
     const inicio = dataInicial.value;
     const fim = dataFinal.value;
 
@@ -84,7 +87,7 @@ function chamarBackend(event) {
 
     paragrafoErroGrafico.innerText = "";
 
-    const url = `http://localhost/2025-2-anthony-testaHentges-Prog4/sistemaPrincipal/backEnd/${pasta}/${consultaSelecionada.arquivo}.php?` + `dataInicial=${inicio}&dataFinal=${fim}`;
+    const url = `http://localhost/sistemaPrincipal/backEnd/${pasta}/${consultaSelecionada.arquivo}.php?` + `dataInicial=${inicio}&dataFinal=${fim}`;
 
     fetch(url)
         .then(res => res.json())
@@ -110,7 +113,7 @@ function chamarBackend(event) {
                 campoHora = "horainclusao";
             }
 
-            const labels = data.map(d => ${d[campoData] ?? ""} ${d[campoHora] ?? ""});
+            const labels = data.map(d => `${d[campoData] ?? ""} ${d[campoHora] ?? ""}`);
 
             // Pega colunas de valores
             const campos = Object.keys(data[0]);
@@ -128,7 +131,7 @@ function chamarBackend(event) {
 
             if (graficoAtual) graficoAtual.destroy();
 
-            const ctx = document.getElementById("graficoMabel").getContext("2d");
+            const ctx = document.getElementById("graficoGerado").getContext("2d");
 
             graficoAtual = new Chart(ctx, {
                 type: "bar",
