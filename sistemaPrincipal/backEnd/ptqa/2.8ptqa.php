@@ -20,8 +20,8 @@ $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT
-    dataleitura AS data_leitura,
-    ROUND(AVG(eco2), 1) AS media_CO2_PPM
+    dataleitura,
+    ROUND(AVG(eco2), 1)
 FROM
     leituraptqa
 WHERE

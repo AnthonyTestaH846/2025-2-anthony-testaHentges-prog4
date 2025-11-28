@@ -20,13 +20,13 @@ $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT
-    ROUND(MAX(temperatura), 1) AS temperatura_maxima,
-    ROUND(MIN(temperatura), 1) AS temperatura_minima,
-    ROUND(AVG(temperatura), 1) AS temperatura_media
+    ROUND(MAX(temperatura), 1),
+    ROUND(MIN(temperatura), 1),
+    ROUND(AVG(temperatura), 1)
 FROM
     leituraptqa
 WHERE
-    CONCAT(dataleitura, ' ', horaleitura) BETWEEN :dataInicial AND :dataFinal;
+    dataleitura BETWEEN :dataInicial AND :dataFinal;
 ";
 
 $stmt = $conecta->prepare($sql);

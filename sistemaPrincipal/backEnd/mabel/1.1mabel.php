@@ -19,11 +19,10 @@ if (!$dataInicial || !$dataFinal) {
 $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
-$sql = "SELECT DATE_FORMAT(STR_TO_DATE(datahora, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS data_hora,
-DATE_FORMAT(STR_TO_DATE(dataInclusao, '%Y-%m-%d'), '%d/%m/%Y') AS data_inclusao
+$sql = "SELECT dataInclusao
 FROM leituramabel
 WHERE
-    CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME)
+    dataInclusao
 BETWEEN
     :dataInicial AND :dataFinal
 ";

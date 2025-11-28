@@ -20,12 +20,12 @@ $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT
-    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
-    MIN(ROUND(pressao, 1)) AS minima_pressao_diaria
+    dataleitura,
+    MIN(ROUND(pressao, 1))
 FROM
     leituraptqa
 WHERE
-    CONCAT(dataleitura, ' ', horaleitura) BETWEEN :dataInicial AND :dataFinal
+    dataleitura BETWEEN :dataInicial AND :dataFinal
 GROUP BY
     dataleitura
 ORDER BY

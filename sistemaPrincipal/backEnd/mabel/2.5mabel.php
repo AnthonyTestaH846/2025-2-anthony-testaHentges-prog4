@@ -21,11 +21,10 @@ $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT MAX(ninho)
-    AS max_ninho
 FROM
     leituramabel
 WHERE
-    CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME)
+    dataInclusao
 BETWEEN
     :dataInicial
     AND :dataFinal;

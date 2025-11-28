@@ -20,14 +20,14 @@ $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT
-    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
-    horaleitura AS hora_leitura,
-    ROUND(umidade, 1) AS umidade
+    dataleitura,
+    horaleitura,
+    ROUND(umidade, 1)
 FROM
     leituraptqa
 WHERE
     umidade > 70 AND umidade < 100
-    AND CONCAT(dataleitura, ' ', horaleitura) BETWEEN :dataInicial AND :dataFinal
+    dataleitura BETWEEN :dataInicial AND :dataFinal
 ORDER BY
     data_leitura ASC, hora_leitura ASC;
 ";

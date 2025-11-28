@@ -19,13 +19,11 @@ if (!$dataInicial || !$dataFinal) {
 $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
-$sql = "SELECT DATE(datahora)
-    AS datainclusao, AVG(ti)
-    AS media_diaria_ti 
+$sql = "SELECT dataInclusao, AVG(ti)
 FROM 
     leituramabel
 WHERE 
-    CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME)
+    dataInclusao
 BETWEEN
     :dataInicial
     AND :dataFinal

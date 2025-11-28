@@ -22,7 +22,7 @@ $dataFinal     = $dataFinal   . " 23:59:59";
 $sql = "SELECT datahora, hi
 FROM   leituramabel;
 WHERE
-    CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME)
+    dataInclusao
 BETWEEN
     :dataInicial
     AND :dataFinal;
