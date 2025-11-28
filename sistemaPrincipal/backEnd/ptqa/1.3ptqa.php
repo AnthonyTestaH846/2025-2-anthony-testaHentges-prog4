@@ -26,10 +26,10 @@ $sql = "SELECT
 FROM
     leituraptqa
 WHERE
-    umidade > 70
+    umidade > 70 AND umidade < 100
     AND CONCAT(dataleitura, ' ', horaleitura) BETWEEN :data_inicio AND :data_fim
 ORDER BY
-    umidade DESC;
+    data_leitura ASC, hora_leitura ASC;
 ";
 
 $stmt = $conecta->prepare($sql);
