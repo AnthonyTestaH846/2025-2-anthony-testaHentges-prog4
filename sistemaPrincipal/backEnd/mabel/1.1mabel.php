@@ -21,12 +21,12 @@ $dataFim     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT DATE_FORMAT(STR_TO_DATE(datahora, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS data_hora,
 DATE_FORMAT(STR_TO_DATE(dataInclusao, '%Y-%m-%d'), '%d/%m/%Y') AS data_inclusao
-FROM leituramabel;
+FROM leituramabel
 WHERE
-    datahora
+    CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME)
 BETWEEN
-    :data_inicio
-    AND :data_fim;";
+    :data_inicio AND :data_fim
+";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

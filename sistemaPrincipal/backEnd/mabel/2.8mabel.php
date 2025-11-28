@@ -25,7 +25,7 @@ $sql = "SELECT DATE(datahora)
 FROM 
     leituramabel
 WHERE 
-    datahora
+    CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME)
 BETWEEN
     :data_inicio
     AND :data_fim
