@@ -25,6 +25,7 @@ $sql = "SELECT
 FROM
     leituraptqa
 WHERE
+    aqi > 0 AND aqi < 100
     CONCAT(dataleitura, ' ', horaleitura) BETWEEN :data_inicio AND :data_fim
 GROUP BY
     aqi
