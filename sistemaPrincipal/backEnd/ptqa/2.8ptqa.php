@@ -16,8 +16,8 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 // transformar para formato DATETIME
-$dataInicio  = $dataInicial . " 00:00:00";
-$dataFim     = $dataFinal   . " 23:59:59";
+$dataInicial  = $dataInicial . " 00:00:00";
+$dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT
     dataleitura AS data_leitura,
@@ -37,8 +37,8 @@ LIMIT 5;
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
-    ':data_inicio' => $dataInicio,
-    ':data_fim'    => $dataFim
+    ':dataInicial' => $dataInicial,
+    ':dataFinal'    => $dataFinal
 ]);
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -16,28 +16,29 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 // transformar para formato DATETIME
-$dataInicio  = $dataInicial . " 00:00:00";
-$dataFim     = $dataFinal   . " 23:59:59";
+$dataInicial  = $dataInicial . " 00:00:00";
+$dataFinal     = $dataFinal   . " 23:59:59";
 
-$sql = "SELECT
-    DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
-    horaleitura AS hora_leitura, 
-    aqi AS indice_qualidade_ar
-FROM
-    leituraptqa
-WHERE
-    aqi <= 4
-    AND CONCAT(dataleitura, ' ', horaleitura) BETWEEN :data_inicio AND :data_fim
-ORDER BY dataleitura, horaleitura;
-";
+$sql = "SELECT dataleitura, horaleitura, aqi
+FROM leituraptqa
+WHERE aqi <= 4
+AND dataleitura BETWEEN :dataInicial AND :dataFinal
+ORDER BY dataleitura, horaleitura;";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
-    ':data_inicio' => $dataInicio,
-    ':data_fim'    => $dataFim
+    ':dataInicial' => $dataInicial,
+    ':dataFinal'    => $dataFinal
 ]);
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($resultado as &$row) {
+    if (!empty($row['dataleitura'])) {
+        $row['dataleitura'] = date("d/m/Y", strtotime($row['dataleitura']));
+    }
+}
+
 
 echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ?>

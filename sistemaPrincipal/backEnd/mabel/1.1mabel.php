@@ -16,8 +16,8 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 // transformar para formato DATETIME
-$dataInicio  = $dataInicial . " 00:00:00";
-$dataFim     = $dataFinal   . " 23:59:59";
+$dataInicial  = $dataInicial . " 00:00:00";
+$dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT DATE_FORMAT(STR_TO_DATE(datahora, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS data_hora,
 DATE_FORMAT(STR_TO_DATE(dataInclusao, '%Y-%m-%d'), '%d/%m/%Y') AS data_inclusao
@@ -25,13 +25,13 @@ FROM leituramabel
 WHERE
     CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME)
 BETWEEN
-    :data_inicio AND :data_fim
+    :dataInicial AND :dataFinal
 ";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
-    ':data_inicio' => $dataInicio,
-    ':data_fim'    => $dataFim
+    ':dataInicial' => $dataInicial,
+    ':dataFinal'    => $dataFinal
 ]);
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);

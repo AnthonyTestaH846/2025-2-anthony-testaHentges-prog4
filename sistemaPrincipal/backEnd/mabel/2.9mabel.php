@@ -16,8 +16,8 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 // transformar para formato DATETIME
-$dataInicio  = $dataInicial . " 00:00:00";
-$dataFim     = $dataFinal   . " 23:59:59";
+$dataInicial  = $dataInicial . " 00:00:00";
+$dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT
     datainclusao AS Data,
@@ -25,7 +25,7 @@ $sql = "SELECT
 FROM
     leituramabel
 WHERE
-    CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME) BETWEEN :data_inicio AND :data_fim
+    CAST(CONCAT(datainclusao, ' ', horainclusao) AS DATETIME) BETWEEN :dataInicial AND :dataFinal
 GROUP BY
     datainclusao
 ORDER BY
@@ -34,8 +34,8 @@ ORDER BY
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
-    ':data_inicio' => $dataInicio,
-    ':data_fim'    => $dataFim
+    ':dataInicial' => $dataInicial,
+    ':dataFinal'    => $dataFinal
 ]);
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);

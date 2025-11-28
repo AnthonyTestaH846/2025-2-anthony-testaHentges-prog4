@@ -16,8 +16,8 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 // transformar para formato DATETIME
-$dataInicio  = $dataInicial . " 00:00:00";
-$dataFim     = $dataFinal   . " 23:59:59";
+$dataInicial  = $dataInicial . " 00:00:00";
+$dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT
     DATE_FORMAT(STR_TO_DATE(dataleitura, '%Y-%m-%d'), '%d/%m/%Y') AS data_leitura,
@@ -27,15 +27,15 @@ FROM
     leituraptqa
 WHERE
     umidade > 70 AND umidade < 100
-    AND CONCAT(dataleitura, ' ', horaleitura) BETWEEN :data_inicio AND :data_fim
+    AND CONCAT(dataleitura, ' ', horaleitura) BETWEEN :dataInicial AND :dataFinal
 ORDER BY
     data_leitura ASC, hora_leitura ASC;
 ";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
-    ':data_inicio' => $dataInicio,
-    ':data_fim'    => $dataFim
+    ':dataInicial' => $dataInicial,
+    ':dataFinal'    => $dataFinal
 ]);
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);

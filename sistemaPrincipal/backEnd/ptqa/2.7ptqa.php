@@ -16,8 +16,8 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 // transformar para formato DATETIME
-$dataInicio  = $dataInicial . " 00:00:00";
-$dataFim     = $dataFinal   . " 23:59:59";
+$dataInicial  = $dataInicial . " 00:00:00";
+$dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT
     aqi AS indice_qualidade_ar,
@@ -26,7 +26,7 @@ FROM
     leituraptqa
 WHERE
     aqi > 0 AND aqi < 100
-    CONCAT(dataleitura, ' ', horaleitura) BETWEEN :data_inicio AND :data_fim
+    CONCAT(dataleitura, ' ', horaleitura) BETWEEN :dataInicial AND :dataFinal
 GROUP BY
     aqi
 ORDER BY
@@ -35,8 +35,8 @@ ORDER BY
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
-    ':data_inicio' => $dataInicio,
-    ':data_fim'    => $dataFim
+    ':dataInicial' => $dataInicial,
+    ':dataFinal'    => $dataFinal
 ]);
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
