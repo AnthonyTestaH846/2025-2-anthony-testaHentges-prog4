@@ -9,6 +9,8 @@ include '../conecta_mysql.php';
 
 $dataInicial = $_GET['dataInicial'] ?? null;
 $dataFinal   = $_GET['dataFinal'] ?? null;
+// pega o parametro do filtro de freq (dias)
+$freq = $_GET['freq'] ?? null;
 
 if (!$dataInicial || !$dataFinal) {
     echo json_encode(["erro" => "Datas não enviadas"]);
@@ -35,5 +37,26 @@ $stmt->execute([
 
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    // Array final filtrado
+    $dadosFiltrados = [];
+
+    // --- LOOP DE SAMPLING ---
+    foreach ($resultado as $index => $row) {
+        // O operador % (módulo) verifica o resto da divisão.
+        // Se o resto for 0, significa que atingimos o intervalo desejado (ex: a cada 10 registros).
+        if ($index % $freq == 0) {
+            
+            // Formata a data apenas para os itens que vão entrar no array final
+            if (!empty($row['datainclusao'])) {
+                $row['datainclusao'] = date("d/m/Y", strtotime($row['datainclusao']));
+            }
+
+            // Adiciona ao novo array
+            $dadosFiltrados[] = $row;
+        }
+    }
+
+
+
+echo json_encode($dadosFiltrados);
 ?>

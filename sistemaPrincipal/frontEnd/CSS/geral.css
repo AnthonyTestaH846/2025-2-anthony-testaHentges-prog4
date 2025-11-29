@@ -363,13 +363,13 @@ footer ul{
   gap: 5px;
 }
 
-.input-group label {
+.input-group label, #filtrofreq label {
   font-size: 14px;
   font-weight: 600;
   color: #333;
 }
 
-.input-group input {
+.input-group input, #filtrofreq input {
   padding: 10px 12px;
   width: 180px;
   border: 2px solid #e0c15c; /* amarelo mel suave */

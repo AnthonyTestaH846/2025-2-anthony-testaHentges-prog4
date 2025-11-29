@@ -64,13 +64,19 @@
                     <input type="date" id="dataFinal" nome="dataFinal" required>
                 </div>
         
+                <div>
+                    <label for="filtrofreq">Filtro - Dias</label>
+                    <input type="number" id="filtrofreq" value="20">
+                </div>
+
                 <button type="submit" id="botaoData" class="btn-filter">Filtrar</button>
             </form>
         
             <p id="pErro" class="error-msg"></p>
         </div>
-
-        <canvas id="graficoGerado"></canvas>
+        <section class="planoFundoGrafico">
+            <canvas id="graficoGerado"></canvas>
+        </section>
         
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="../JS/graficos.js" defer></script>

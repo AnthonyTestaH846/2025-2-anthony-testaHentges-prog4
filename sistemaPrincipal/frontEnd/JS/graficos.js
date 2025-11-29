@@ -5,6 +5,7 @@ let dataFinal = null;
 let paragrafoErroGrafico = document.getElementById("pErro");
 let selectMabel = document.getElementById("selectMabel");
 let selectPTQA = document.getElementById("selectPTQA");
+let filtrofreq = document.getElementById("filtrofreq");
 let consultaSelecionada = null;
 let pasta = "";
 
@@ -73,6 +74,8 @@ function chamarBackend(event) {
 
     const inicio = dataInicial.value;
     const fim = dataFinal.value;
+    // pegar valor do filtro
+    const freq = filtrofreq.value;
 
     if (!inicio || !fim) {
         paragrafoErroGrafico.innerText = "Por favor, preencha as duas datas.";
@@ -84,9 +87,19 @@ function chamarBackend(event) {
         return;
     }
 
+    // validar filtro > 0
+    if (freq <= 0) {
+        paragrafoErroGrafico.innerText = "O filtro de dias deve ser maior que 0.";
+        return;
+    }
+
+
     paragrafoErroGrafico.innerText = "";
 
-    const url = `http://localhost/sistemaPrincipal/backEnd/${pasta}/${consultaSelecionada.arquivo}.php?` + `dataInicial=${inicio}&dataFinal=${fim}`;
+    const url = `http://localhost/sistemaPrincipal/backEnd/${pasta}/${consultaSelecionada.arquivo}.php?` + `dataInicial=${inicio}&dataFinal=${fim}`
+        + `&filtrofreq=${freq}`; // adicionar filtro na url
+
+    console.log("URL chamada:", url);
 
     fetch(url)
         .then(res => res.json())

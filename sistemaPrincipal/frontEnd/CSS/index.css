@@ -424,3 +424,14 @@ color: var(--text);
 font-weight: 600;
 word-wrap: break-word; /* quebra palavras se necessário */
 }
+
+.divfooter {
+    justify-items: center;
+    align-items: center;
+    border: 2px solid #FAFAFA;
+    border-radius: 5px;
+}
+
+.divfooter:hover {
+    transform: scaleX(1.03);
+}
