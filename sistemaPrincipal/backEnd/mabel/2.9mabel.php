@@ -17,25 +17,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
-
-$sql = "SELECT
-    datainclusao AS Data,
-    AVG(hi) AS Umidade_Media_Diaria
-FROM
-    leituramabel
-WHERE
-    dataInclusao
-BETWEEN
-    :dataInicial
-    AND :dataFinal
-GROUP BY
-    datainclusao
-ORDER BY
-    datainclusao;
-";
+$sql = "SELECT datainclusao, horainclusao, AVG(hi) AS media_hi
+FROM leituramabel
+WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
+GROUP BY datainclusao
+ORDER BY dataInclusao ASC;";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

@@ -22,15 +22,10 @@ if (!$dataInicial || !$dataFinal) {
 $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
-$sql = "SELECT AVG(ti)
-FROM
-    leituramabel
-WHERE
-    dataInclusao
-BETWEEN
-    :dataInicial
-    AND :dataFinal;
-";
+$sql = "SELECT datainclusao, horainclusao, AVG(ti) as media_ti
+FROM leituramabel
+WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
+ORDER BY dataInclusao ASC;";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

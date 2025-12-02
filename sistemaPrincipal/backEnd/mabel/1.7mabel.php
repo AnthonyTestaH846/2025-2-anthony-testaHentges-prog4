@@ -22,20 +22,10 @@ if (!$dataInicial || !$dataFinal) {
 $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
-$sql = "SELECT
-    datahora,
-    ti,
-    te,
-    hi,
-    he
-FROM
-    leituramabel;
-WHERE
-    dataInclusao
-BETWEEN
-    :dataInicial
-    AND :dataFinal;
-";
+$sql = "SELECT datainclusao, horainclusao, ti, te, hi, he
+FROM leituramabel;
+WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
+ORDER BY dataInclusao ASC;";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

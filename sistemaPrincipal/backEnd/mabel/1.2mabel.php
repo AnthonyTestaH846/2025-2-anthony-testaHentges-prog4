@@ -11,25 +11,18 @@ $dataInicial = $_GET['dataInicial'] ?? null;
 $dataFinal   = $_GET['dataFinal'] ?? null;
 // pega o parametro do filtro de freq (dias)
 $freq = $_GET['filtrofreq'] ?? null;
-$dataFinal   = $_GET['dataFinal'] ?? null;
 
 if (!$dataInicial || !$dataFinal) {
     echo json_encode(["erro" => "Datas não enviadas"]);
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
 
-$sql = "SELECT datahora, ti
-FROM   leituramabel;
-WHERE
-    dataInclusao
-BETWEEN
-    :dataInicial
-    AND :dataFinal;
-    ";
+$sql = "SELECT datainclusao, horainclusao, ti
+FROM leituramabel;
+WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
+ORDER BY dataInclusao ASC;
+";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
