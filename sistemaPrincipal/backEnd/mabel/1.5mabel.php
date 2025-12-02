@@ -23,9 +23,9 @@ $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
 $sql = "SELECT datainclusao, horainclusao, he
-FROM leituramabel;
+FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
-ORDER BY dataInclusao ASC;";
+ORDER BY dataInclusao ASC";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

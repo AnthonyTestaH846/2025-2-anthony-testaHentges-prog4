@@ -24,7 +24,7 @@ $dataFinal     = $dataFinal   . " 23:59:59";
 $sql = "SELECT datainclusao, horainclusao, AVG(ti - te) as media_diferenca
 FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
-ORDER BY dataInclusao ASC;";
+ORDER BY dataInclusao ASC";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

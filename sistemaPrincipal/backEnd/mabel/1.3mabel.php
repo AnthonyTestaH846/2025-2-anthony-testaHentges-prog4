@@ -19,9 +19,9 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 $sql = "SELECT datainclusao, horainclusao, te
-FROM leituramabel;
+FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
-ORDER BY dataInclusao ASC;";
+ORDER BY dataInclusao ASC";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

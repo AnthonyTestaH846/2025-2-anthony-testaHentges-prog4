@@ -20,7 +20,7 @@ if (!$dataInicial || !$dataFinal) {
 $sql = "SELECT datainclusao, horainclusao, MIN(ninho) as min_ninho
 FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
-ORDER BY dataInclusao ASC;";
+ORDER BY dataInclusao ASC";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

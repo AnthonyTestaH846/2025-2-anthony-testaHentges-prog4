@@ -21,7 +21,7 @@ $sql = "SELECT datainclusao, horainclusao, AVG(hi) AS media_hi
 FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
 GROUP BY datainclusao
-ORDER BY dataInclusao ASC;";
+ORDER BY dataInclusao ASC";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
