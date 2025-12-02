@@ -17,19 +17,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
-
-$sql = "SELECT
-        dataleitura,
-        horaleituraa,
-        ROUND(tvoc, 1)
-FROM
-    leituraptqa
-WHERE
-    tvoc > 200
-    dataleitura BETWEEN :dataInicial AND :dataFinal;";
+$sql = "SELECT dataleitura, horaleituraa, ROUND(tvoc, 1)
+FROM leituraptqa
+WHERE tvoc > 200
+AND dataleitura BETWEEN :dataInicial AND :dataFinal
+";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

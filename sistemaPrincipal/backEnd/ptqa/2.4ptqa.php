@@ -17,21 +17,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
-
-$sql = "SELECT
-    dataleitura,
-    MIN(ROUND(pressao, 1))
-FROM
-    leituraptqa
-WHERE
-    dataleitura BETWEEN :dataInicial AND :dataFinal
-GROUP BY
-    dataleitura
-ORDER BY
-    dataleitura;";
+$sql = "SELECT dataleitura, MIN(ROUND(pressao, 1))
+FROM leituraptqa
+WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
+GROUP BY dataleitura
+ORDER BY dataleitura ASC";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

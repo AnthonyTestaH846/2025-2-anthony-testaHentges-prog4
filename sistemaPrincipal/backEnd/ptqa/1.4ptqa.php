@@ -16,19 +16,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
-
-$sql = "SELECT
-    dataleitura,
-    horaleitura,
-    eco2 AS concentracao_gas_carbonico
-FROM
-    leituraptqa
-WHERE
-    eco2 > 1000
-    dataleitura BETWEEN :dataInicial AND :dataFinal;
+$sql = "SELECT dataleitura, horaleitura, eco2
+FROM leituraptqa
+WHERE eco2 < 1000
+AND dataleitura BETWEEN :dataInicial AND :dataFinal
+ORDER BY dataleitura ASC
 ";
 
 $stmt = $conecta->prepare($sql);

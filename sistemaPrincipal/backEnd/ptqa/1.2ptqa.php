@@ -17,15 +17,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
-
 $sql = "SELECT dataleitura, horaleitura, aqi
 FROM leituraptqa
 WHERE aqi <= 4
 AND dataleitura BETWEEN :dataInicial AND :dataFinal
-ORDER BY dataleitura, horaleitura;";
+ORDER BY dataleitura, horaleitura ASC";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([
@@ -53,12 +49,6 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $dadosFiltrados[] = $row;
         }
     }
-
-    foreach ($resultado as &$row) {
-    if (!empty($row['dataleitura'])) {
-        $row['dataleitura'] = date("d/m/Y", strtotime($row['dataleitura']));
-    }
-}
 
 
 echo json_encode($dadosFiltrados);

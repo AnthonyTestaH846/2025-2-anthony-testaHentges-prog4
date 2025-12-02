@@ -17,24 +17,12 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
-
-$sql = "SELECT
-    dataleitura,
-    ROUND(AVG(eco2), 1)
-FROM
-    leituraptqa
-WHERE
-    dataleitura >= DATE_FORMAT(:ano_mes, '%Y-%m-01')
-    
-    AND dataleitura <= LAST_DAY(DATE_FORMAT(:ano_mes, '%Y-%m-01'))
-GROUP BY
-    dataleitura
-ORDER BY
-    media_CO2_PPM DESC
-LIMIT 5;
+$sql = "SELECT dataleitura, ROUND(AVG(eco2), 1)
+FROM leituraptqa
+WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
+GROUP BY dataleitura
+ORDER BY media_CO2_PPM DESC
+LIMIT 5
 ";
 
 $stmt = $conecta->prepare($sql);

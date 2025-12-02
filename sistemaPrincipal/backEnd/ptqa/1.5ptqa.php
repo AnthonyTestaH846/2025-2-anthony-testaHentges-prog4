@@ -17,19 +17,12 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
-
-$sql = "SELECT
-        dataleitura,
-        horaleitura,
-        ROUND(pressao, 1) AS pressao_atmosferica
-FROM
-    leituraptqa
-WHERE
-    pressao < 1000
-    dataleitura BETWEEN :dataInicial AND :dataFinal;";
+$sql = "SELECT dataleitura, horaleitura, ROUND(pressao, 1)
+FROM leituraptqa
+WHERE pressao < 1000
+AND dataleitura BETWEEN :dataInicial AND :dataFinal
+ORDER BY dataleitura ASC
+";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

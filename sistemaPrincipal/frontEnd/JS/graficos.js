@@ -25,21 +25,21 @@ const consultas = {
     12: { arquivo: "2.7ptqa", legenda: "Media Gases", tipoGrafico: "line" },
     13: { arquivo: "2.8ptqa", legenda: "maior concentração co2", tipoGrafico: "line" },
 
-    14: { arquivo: "1.2mabel", legenda: "Temperatura Interna", tipoGrafico: "line" },
+    14: { arquivo: "1.2mabel", legenda: "Temperatura Interna", tipoGrafico: "bar" },
     15: { arquivo: "1.3mabel", legenda: "Temperatura Externa", tipoGrafico: "line" },
     16: { arquivo: "1.4mabel", legenda: "Umidade Interna", tipoGrafico: "line" },
     17: { arquivo: "1.5mabel", legenda: "Umidade Externa", tipoGrafico: "line" },
     18: { arquivo: "1.6mabel", legenda: "Temperatura do Ninho", tipoGrafico: "line" },
     19: { arquivo: "1.7mabel", legenda: "Umidade e Temperatura Interna e Externa", tipoGrafico: "line" },
-    20: { arquivo: "2.1mabel", legenda: "Temperatura Interna Média", tipoGrafico: "line" },
-    21: { arquivo: "2.2mabel", legenda: "Temperatura Externa Média", tipoGrafico: "line" },
-    22: { arquivo: "2.3mabel", legenda: "Umidade Interna Média", tipoGrafico: "line" },
-    23: { arquivo: "2.4mabel", legenda: "Umidade Externa Média", tipoGrafico: "line" },
-    24: { arquivo: "2.5mabel", legenda: "Temperatura Máxima do Ninho", tipoGrafico: "line" },
-    25: { arquivo: "2.6mabel", legenda: "Temperatura Mínima do Ninho", tipoGrafico: "line" },
-    26: { arquivo: "2.7mabel", legenda: "Diferença Média Temperatura Interna e Externa", tipoGrafico: "line" },
-    27: { arquivo: "2.8mabel", legenda: "Média Diária Temperatura Interna", tipoGrafico: "line" },
-    28: { arquivo: "2.9mabel", legenda: "Média Diária Umidade Interna", tipoGrafico: "line" }
+    20: { arquivo: "2.1mabel", legenda: "Temperatura Interna Média", tipoGrafico: "bar" },
+    21: { arquivo: "2.2mabel", legenda: "Temperatura Externa Média", tipoGrafico: "bar" },
+    22: { arquivo: "2.3mabel", legenda: "Umidade Interna Média", tipoGrafico: "bar" },
+    23: { arquivo: "2.4mabel", legenda: "Umidade Externa Média", tipoGrafico: "bar" },
+    24: { arquivo: "2.5mabel", legenda: "Temperatura Máxima do Ninho", tipoGrafico: "bar" },
+    25: { arquivo: "2.6mabel", legenda: "Temperatura Mínima do Ninho", tipoGrafico: "bar" },
+    26: { arquivo: "2.7mabel", legenda: "Diferença Média Temperatura Interna e Externa", tipoGrafico: "bar" },
+    27: { arquivo: "2.8mabel", legenda: "Média Diária Temperatura Interna", tipoGrafico: "bar" },
+    28: { arquivo: "2.9mabel", legenda: "Média Diária Umidade Interna", tipoGrafico: "bar" }
 
 };
 

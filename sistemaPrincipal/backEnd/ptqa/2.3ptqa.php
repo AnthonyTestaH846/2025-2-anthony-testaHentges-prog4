@@ -17,16 +17,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
-
-$sql = "SELECT
-    MAX(eco2)
-FROM
-    leituraptqa
-WHERE
-    dataleitura BETWEEN :dataInicial AND :dataFinal;";
+$sql = "SELECT MAX(eco2)
+FROM leituraptqa
+WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
+ORDER BY dataleitura ASC
+";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

@@ -17,22 +17,13 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-// transformar para formato DATETIME
-$dataInicial  = $dataInicial . " 00:00:00";
-$dataFinal     = $dataFinal   . " 23:59:59";
-
-$sql = "SELECT
-    aqi,
-    ROUND(AVG(tvoc), 1)
-FROM
-    leituraptqa
-WHERE
-    aqi > 0 AND aqi < 100 AND
-    dataleitura BETWEEN :dataInicial AND :dataFinal
-GROUP BY
-    aqi
-ORDER BY
-    aqi;
+$sql = "SELECT aqi, ROUND(AVG(tvoc), 1)
+FROM leituraptqa
+WHERE aqi > 0 
+AND aqi < 100 
+AND dataleitura BETWEEN :dataInicial AND :dataFinal
+GROUP BY aqi
+ORDER BY aqi ASC
 ";
 
 $stmt = $conecta->prepare($sql);
