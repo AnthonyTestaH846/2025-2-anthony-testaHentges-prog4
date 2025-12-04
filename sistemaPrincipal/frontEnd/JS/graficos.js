@@ -149,17 +149,79 @@ function chamarBackend(event) {
                 type: consultaSelecionada.tipoGrafico,
                 data: { labels, datasets },
                 options: {
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: consultaSelecionada.legenda,
-                            font: { size: 18 }
-                        }
+                responsive: true,
+                maintainAspectRatio: false,
+
+                plugins: {
+                    title: {
+                    display: true,
+                    text: consultaSelecionada.legenda,
+                    font: {
+                        size: 22,
+                        family: "'Arial', sans-serif",
+                        weight: 'bold'
                     },
-                    scales: {
-                        y: { beginAtZero: true }
+                    color: '#333',            // cor do título
+                    padding: { top: 10, bottom: 30 }
+                    },
+                    legend: {
+                    display: true,
+                    position: 'top',          // 'top', 'bottom', 'left', 'right'
+                    labels: {
+                        font: {
+                        size: 14,
+                        family: "'Arial', sans-serif"
+                        },
+                        color: '#555'
                     }
+                    },
+                    tooltip: {
+                    enabled: true,
+                    backgroundColor: 'rgba(0,0,0,0.7)',
+                    titleFont: { size: 14, family: "'Arial', sans-serif", weight: 'bold'},
+                    bodyFont: { size: 12, family: "'Arial', sans-serif" },
+                    padding: 10,
+                    cornerRadius: 4,
+                    displayColors: false
+                    }
+                },
+
+                scales: {
+                    x: {
+                    grid: {
+                        display: false  // remove linhas de grade horizontais
+                    },
+                    ticks: {
+                        color: '#666',
+                        font: {
+                        size: 12,
+                        family: "'Arial', sans-serif"
+                        }
+                    }
+                    },
+                    y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(200,200,200,0.3)',
+                        lineWidth: 1,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        color: '#666',
+                        font: {
+                        size: 12
+                        }
+                    }
+                    }
+                },
+
+                // animação (opcional)
+                animation: {
+                    duration: 1000,
+                    easing: 'easeOutQuart'
                 }
+                }
+
             });
         })
         .catch(err => console.error("Erro:", err));

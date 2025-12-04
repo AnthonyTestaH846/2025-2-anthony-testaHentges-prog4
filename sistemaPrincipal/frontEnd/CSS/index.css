@@ -1,28 +1,5 @@
 /*reactbits.dev
     Site com animações com código pronto!!!*/
-/* Header{
-    height: 80px;
-    display: flex;
-    margin: 0;
-    background-color: #fafafa;
-    color: rgb(0, 0, 0);
-    text-align: right;
-    font-family: Arial, Helvetica, sans-serif;
-    border-bottom: solid 2px rgb(213, 211, 211);
-    padding: 5px 10px; 
-    display: flex;
-    align-items: center;
-}
-
-header picture{
-    align-self: left;
-}
-
-header img{
-    margin-left: 10px;
-    max-width: auto;
-    max-height: 60px;
-} */
 
 header {
     height: 80px;
@@ -40,40 +17,56 @@ header {
     max-height: 60px;
   }
 
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
 footer{
-    display: flex;
-    background-color: #094411;
-    color: white;
-    padding: 10px;
-    text-align: left;
-    font-family: Arial, Helvetica, sans-serif;    
+  display: flex;
+  background-color: #094411;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;    
 }
 
 footer a{
-    display: block;
-    color:rgba(103, 214, 105, 0.945);
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s, color 0.3s;
+  display: block;
+  color:rgba(103, 214, 105, 0.945);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s, color 0.3s;
 }
 
 footer a:hover{
-    display: block;
-    padding: 8 8 8 8;
-    color:rgba(255, 255, 255, 0.945);
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s, color 0.3s;
-    background-color: #18922983;
+  display: block;
+  padding: 8 8 8 8;
+  color:rgba(255, 255, 255, 0.945);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s, color 0.3s;
+  background-color: #18922983;
 }
-
 
 footer ul{
-    justify-items: center;
-    list-style-type: none;
+  justify-items: center;
+  list-style-type: none;
 }
+
+.divfooter{
+  padding-top: 30px;
+  justify-items: center;
+  align-items: center;
+  margin-left: 100px;
+}
+
+#logoifscfooter{
+  max-width: 150px;
+  max-height: 150px;
+  margin-top: 5px;
+} Até aqui
 
 section{
     margin: 20px;
@@ -120,21 +113,11 @@ section{
     font-weight: bolder;
 }
 
-#logoifscfooter{
-    max-width: 150px;
-    max-height: 150px;
-    margin-top: 5px;
-} 
 
 #imagemifscdiv{
     margin-left: 0;
 }
 
-.divfooter{
-    justify-items: center;
-    align-items: center;
-    margin-left: 100px;
-}
 
 /* #logoifscfooter{
     
@@ -423,15 +406,4 @@ font-size: 2.2em;
 color: var(--text);
 font-weight: 600;
 word-wrap: break-word; /* quebra palavras se necessário */
-}
-
-.divfooter {
-    justify-items: center;
-    align-items: center;
-    border: 2px solid #FAFAFA;
-    border-radius: 5px;
-}
-
-.divfooter:hover {
-    transform: scaleX(1.03);
 }
