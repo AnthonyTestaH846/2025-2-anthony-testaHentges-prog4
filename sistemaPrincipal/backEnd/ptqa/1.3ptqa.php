@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, horaleitura, ROUND(umidade, 1)
+$sql = "SELECT dataleitura, horaleitura, ROUND(umidade, 1) AS umidade
 FROM leituraptqa
 WHERE umidade > 70 
 AND umidade < 100 

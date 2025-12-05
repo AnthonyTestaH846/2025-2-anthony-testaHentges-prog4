@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT aqi, ROUND(AVG(tvoc), 1)
+$sql = "SELECT aqi, ROUND(AVG(tvoc), 1) AS gases_voláteis
 FROM leituraptqa
 WHERE aqi > 0 
 AND aqi < 100 

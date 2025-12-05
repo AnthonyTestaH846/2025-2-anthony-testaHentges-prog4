@@ -17,9 +17,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, MIN(ROUND(pressao, 1))
+$sql = "SELECT dataleitura, MIN(ROUND(pressao, 1)) AS pressão
 FROM leituraptqa
 WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
+AND pressao IS NOT NULL
+AND pressao > 0
 GROUP BY dataleitura
 ORDER BY dataleitura ASC";
 

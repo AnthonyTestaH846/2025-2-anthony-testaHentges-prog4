@@ -17,9 +17,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, horaleitura, ROUND(pressao, 1)
+$sql = "SELECT dataleitura, horaleitura, ROUND(pressao, 1) AS pressão
 FROM leituraptqa
 WHERE pressao < 1000
+AND pressao IS NOT NULL
+AND pressao > 0
 AND dataleitura BETWEEN :dataInicial AND :dataFinal
 ORDER BY dataleitura ASC
 ";

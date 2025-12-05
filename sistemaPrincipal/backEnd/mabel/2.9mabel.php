@@ -17,11 +17,17 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT datainclusao, horainclusao, AVG(hi) AS media_hi
-FROM leituramabel
-WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
-GROUP BY datainclusao
-ORDER BY dataInclusao ASC";
+$sql = "SELECT
+    datainclusao,
+    AVG(hi) AS media_diaria_hi
+FROM
+    leituramabel
+WHERE
+    datainclusao BETWEEN :dataInicial AND :dataFinal
+GROUP BY
+    datainclusao
+ORDER BY
+    datainclusao ASC;";
 
 $stmt = $conecta->prepare($sql);
 $stmt->execute([

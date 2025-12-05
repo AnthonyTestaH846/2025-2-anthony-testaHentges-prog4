@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT MAX(eco2)
+$sql = "SELECT MAX(eco2) AS 
 FROM leituraptqa
 WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
 ORDER BY dataleitura ASC

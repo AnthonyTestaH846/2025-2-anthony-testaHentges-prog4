@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT ROUND(AVG(temperatura), 1)
+$sql = "SELECT ROUND(AVG(temperatura), 1) AS temperatura_média
 FROM leituraptqa
 WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
 ORDER BY dataleitura ASC

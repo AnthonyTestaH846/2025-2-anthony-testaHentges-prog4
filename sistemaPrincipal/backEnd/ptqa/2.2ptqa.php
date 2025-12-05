@@ -17,9 +17,12 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, ROUND(AVG(umidade), 1)
+$sql = "SELECT dataleitura, ROUND(AVG(umidade), 1) AS umidade_média
 FROM leituraptqa
 WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
+AND umidade < 100
+AND umidade > 0
+AND umidade IS NOT NULL
 GROUP BY dataleitura
 ORDER BY dataleitura ASC
 ";

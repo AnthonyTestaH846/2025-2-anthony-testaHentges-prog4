@@ -16,7 +16,7 @@ let graficoAtual = null;
 // consultas (seleção de consulta + legenda)
 const consultas = {
     1:  { arquivo: "1.2ptqa", legenda: "Baixa AQI", tipoGrafico: "line" },
-    2:  { arquivo: "1.3ptqa", legenda: "Umidade>70%", tipoGrafico: "bar" },
+    2:  { arquivo: "1.3ptqa", legenda: "Umidade > 70%", tipoGrafico: "bar" },
     3:  { arquivo: "1.4ptqa", legenda: "CO2 < 1000", tipoGrafico: "bar" },
     4:  { arquivo: "1.5ptqa", legenda: "Pressão < 1000", tipoGrafico: "bar" },
     5:  { arquivo: "1.6ptqa", legenda: "Gases acima de 200", tipoGrafico: "bar" },
