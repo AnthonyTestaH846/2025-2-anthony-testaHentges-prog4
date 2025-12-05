@@ -3,29 +3,31 @@
 /* ========================= */
 
 :root {
-  --primary: #0a8f41;
-  --primary-hover: #067331;
-  --bg: #f3f4f6;
-  --text: #1b1b1b;
-  --white: #ffffff;
+    --primary: #0a8f41;
+    --primary-hover: #067331;
+    --bg: #f3f4f6;
+    --text: #1b1b1b;
+    --white: #ffffff;
+    --yellow-dark: #c69709;
+    --yellow-light: #e0c15c;
+    --yellow-focus: #f0b400;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-  box-shadow: inset;
-  background-image: url("../Imagens/ifscfundo.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;  /* <-- mantém a imagem fixa */
-  /* background: var(--bg); */
-  color: var(--text);
+    box-shadow: inset;
+    background-image: url("../Imagens/ifscfundo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text);
 }
 
 /* ========================= */
@@ -33,210 +35,349 @@ body {
 /* ========================= */
 
 header {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  background-color: #fafafa;
-  border-bottom: solid 2px rgb(218, 215, 215);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+    border-bottom: solid 2px rgb(218, 215, 215);
 }
 
 header picture {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 header img {
-  max-height: 60px;
+    max-height: 60px;
 }
 
 .menu {
-  margin-left: auto;
-  margin-right: 20px;
-  display: flex;
-  gap: 30px;
-  list-style: none;
+    margin-left: auto;
+    margin-right: 20px;
+    display: flex;
+    gap: 30px;
+    list-style: none;
 }
 
 .menu a {
-  display: block;
-  padding: 12px 20px;
-  color:#c69709;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: 0.3s;
+    display: block;
+    padding: 12px 20px;
+    color: var(--yellow-dark);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .menu a:hover {
-  background-color: #c69709;
-  color: white;
-  font-weight: bolder;
+    background-color: var(--yellow-dark);
+    color: var(--white);
+    font-weight: bolder;
+}
+
+.ativo {
+    display: block;
+    padding: 12px 20px;
+    color: var(--yellow-dark);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 /* ========================= */
 /* FOOTER */
 /* ========================= */
 
-footer{
-  display: flex;
-  background-color: #094411;
-  color: white;
-  padding: 10px;
-  text-align: left;
-  font-family: Arial, Helvetica, sans-serif;    
+footer {
+    display: flex;
+    background-color: #094411;
+    color: var(--white);
+    padding: 10px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-footer a{
-  display: block;
-  color:rgba(103, 214, 105, 0.945);
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: 0.3s, color 0.3s;
+footer a {
+    display: block;
+    color: rgba(103, 214, 105, 0.945);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s, color 0.3s;
 }
 
-footer a:hover{
-  display: block;
-  padding: 8 8 8 8;
-  color:rgba(255, 255, 255, 0.945);
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: 0.3s, color 0.3s;
-  background-color: #18922983;
+footer a:hover {
+    display: block;
+    padding: 8 8 8 8;
+    color: rgba(255, 255, 255, 0.945);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s, color 0.3s;
+    background-color: #18922983;
 }
 
-footer ul{
-  justify-items: center;
-  list-style-type: none;
+footer ul {
+    justify-items: center;
+    list-style-type: none;
 }
 
-.divfooter{
-  padding-top: 30px;
-  justify-items: center;
-  align-items: center;
-  margin-left: 100px;
+.divfooter {
+    padding-top: 30px;
+    justify-items: center;
+    align-items: center;
+    margin-left: 100px;
 }
 
-#logoifscfooter{
-  max-width: 150px;
-  max-height: 150px;
-  margin-top: 5px;
-} 
+#logoifscfooter {
+    max-width: 150px;
+    max-height: 150px;
+    margin-top: 5px;
+}
 
 /* ========================= */
 /* TÍTULO PRINCIPAL */
 /* ========================= */
 
 .titulossubpaginas {
-  margin-top: 2rem;
-  text-align: center;
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color:#009714
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #009714;
 }
 
-.ativo{
-  display: block;
-  padding: 12px 20px;
-  color:#c69709;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: 0.3s;
+/* ========================= */
+/* ESTRUTURA DE CONTEÚDO E BLOCOS (UNIFICADO) */
+/* ========================= */
+
+.slide {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
 }
-/* ========================= */
-/* CONTAINERS DE TÓPICOS */
-/* ========================= */
+
 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6rem;
-  padding: 3rem 1.5rem;
+    /* Usado na página Sobre */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+    padding: 3rem 1.5rem;
+    max-width: 900px;
+    width: 100%;
 }
 
+.content h2 {
+    font-size: 1.9rem;
+    margin: 1.2rem 0 0.6rem;
+    font-weight: 600;
+}
+
+.content h3 {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+/* Estilo Base para TODOS os Blocos (Sobre, Mabel, PTQA) */
+.control-container,
+.topic,
+.filter-section {
+    background: var(--white);
+    border-radius: 12px; /* Padronizado para 12px */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra mais leve e padronizada */
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto 20px; /* Centraliza e adiciona margem inferior entre blocos */
+    padding: 20px;
+}
+
+/* Estilo Específico da Página Sobre (Efeito de Fade/Slide) */
 .topic {
-  background: var(--white);
-  border-radius: 20px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  max-width: 750px;
-  padding: 2rem;
-  opacity: 0.5;
-  transform: scale(0.9);
-  transition: all 0.7s ease;
+    /* Mantém os estilos de bloco, mas adiciona as propriedades de animação */
+    opacity: 0.5;
+    transform: scale(0.9);
+    transition: all 0.7s ease;
+    /* Ajustes internos para o conteúdo da página 'Sobre' */
+    padding: 2rem;
 }
 
 .topic.active {
-  opacity: 1;
-  transform: scale(1);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .topic h2 {
-  color: var(--primary);
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
 }
 
 .topic p,
 .topic li {
-  font-size: 1.05rem;
-  line-height: 1.6rem;
+    font-size: 1.05rem;
+    line-height: 1.6rem;
 }
 
-/* ========================= */
-/* CONTEÚDO */
-/* ========================= */
-
-.slide {
-  display: flex;
-  justify-content: center;
-  padding: 3rem 0;
+/* Estilo para a Seção de Filtros (que é um bloco de controle) */
+.filter-section {
+    padding: 20px;
+    margin-top: 20px;
 }
 
-.content {
-  text-align: center;
-  max-width: 750px;
-  padding: 0 1.5rem;
+.control-container {
+  margin-top: 20px;
 }
 
-.content h2 {
-  font-size: 1.9rem;
-  margin: 1.2rem 0 0.6rem;
-  font-weight: 600;
+/* Título de Controle (Usado em Mabel/PTQA) */
+.control-container h2 {
+    margin-bottom: 12px;
+    margin-top: 0; /* Remove o margin negativo que estava no .filter-container h2 */
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
 }
 
-.content h3 {
-  font-size: 1.1rem;
-  line-height: 1.6rem;
-  font-weight: 400;
-  margin-bottom: 2rem;
-}
 
 /* ========================= */
 /* LISTAS PERSONALIZADAS */
 /* ========================= */
 
 .lista-verde {
-  text-align: left;
-  list-style: none;
-  padding-left: 0;
-  margin-top: 1rem;
+    text-align: left;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
 }
 
 .lista-verde li {
-  position: relative;
-  padding-left: 28px;
-  margin-bottom: 12px;
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
 }
 
 .lista-verde li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: var(--primary);
-  font-weight: bold;
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* ========================= */
+/* FORMULÁRIOS */
+/* ========================= */
+
+.filter-form {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+/* Custom Select (selectMabel, selectPTQA) */
+.custom-select { /* Renomeado graphic-form para custom-select para padronizar */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 10px 40px 10px 15px;
+    border: 2px solid var(--yellow-light);
+    border-radius: 8px;
+    background-color: var(--white);
+    font-size: 16px;
+    color: #333;
+    width: 100%;
+    max-width: 400px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23c89709' d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+}
+
+.custom-select:focus {
+    border-color: var(--yellow-dark);
+    box-shadow: 0 0 0 3px rgba(200, 151, 9, 0.4);
+}
+
+.custom-select:hover {
+    border-color: var(--yellow-dark);
+}
+
+/* Labels + Inputs */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label,
+#filtrofreq label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.input-group input,
+#filtrofreq input {
+    padding: 10px 12px;
+    width: 180px;
+    border: 2px solid var(--yellow-light);
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--yellow-focus);
+    box-shadow: 0 0 5px rgba(240, 180, 0, 0.5);
+}
+
+/* Botão */
+.btn-filter {
+    padding: 12px 20px;
+    background: linear-gradient(90deg, #f5c542, #e6a800);
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-filter:hover {
+    background: linear-gradient(90deg, #ffd75c, var(--yellow-focus));
+    transform: translateY(-2px);
+}
+
+/* Mensagem de erro */
+.error-msg {
+    margin-top: 10px;
+    color: #b00000;
+    font-weight: 600;
+}
+
+/* ========================= */
+/* GRÁFICO */
+/* ========================= */
+
+.planoFundoGrafico {
+    width: 100%; 
+    min-height: 450px;
+    padding: 20px;
+    margin: 0 auto 20px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
 }
 
 /* ========================= */
@@ -244,196 +385,77 @@ footer ul{
 /* ========================= */
 
 .hex-gallery {
-  margin-top: 2.5rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2.5rem;
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
 }
 
 .membro {
-  text-align: center;
+    text-align: center;
 }
 
 .hex {
-  width: 170px;
-  height: 170px;
-  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
-  overflow: hidden;
-  background: var(--white);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: 0.4s;
+    width: 170px;
+    height: 170px;
+    clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: 0.4s;
 }
 
 .hex:hover {
-  transform: scale(1.07);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+    transform: scale(1.07);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
 }
 
 .hex img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .membro h4 {
-  margin-top: 0.8rem;
-  font-weight: 600;
-  font-size: 1rem;
+    margin-top: 0.8rem;
+    font-weight: 600;
+    font-size: 1rem;
 }
 
 
-/* ========================= */
-/* FORMULÁRIOS */
-/* ========================= */
-/* Container geral */
-.filter-container {
-  padding: 20px;
-  font-family: "Inter", sans-serif;
-}
-
-/* Título */
-.filter-container h2 {
-  margin-bottom: 12px;
-  margin-top: -22px;
-  font-size: 28px;
-  font-weight: 700;
-  color: #2a2a2a;
-}
-
-/* Form */
-.filter-form {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  align-items: flex-end;
-}
-
-.graphic-container {
-  padding: 20px;
-  font-family: "Inter", sans-serif;
-}
-
-/* Título */
-.graphic-container h2 {
-  margin-bottom: 12px;
-  font-size: 28px;
-  font-weight: 700;
-  color: #2a2a2a;
-}
-
-.graphic-form {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  
-  padding: 10px 40px 10px 15px;
-  
-  border: 2px solid #e0c15c; 
-  
-  border-radius: 8px;
-  background-color: #fff;
-  font-size: 16px;
-  color: #333;
-  width: 100%;
-  max-width: 400px; 
-  cursor: pointer;
-  outline: none; 
-  transition: border-color 0.3s, box-shadow 0.3s;
-  
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23c89709' d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 15px center; 
-  background-size: 16px;
-}
-
-.graphic-form:focus {
-  border-color: #c89709; 
-  box-shadow: 0 0 0 3px rgba(200, 151, 9, 0.4); 
-}
-
-.graphic-form:hover {
-  border-color: #c89709;
-}
-
-/* Labels + Inputs */
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.input-group label, #filtrofreq label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-}
-
-.input-group input, #filtrofreq input {
-  padding: 10px 12px;
-  width: 180px;
-  border: 2px solid #e0c15c; /* amarelo mel suave */
-  border-radius: 10px;
-  font-size: 14px;
-  transition: 0.2s ease;
-}
-
-.input-group input:focus {
-  outline: none;
-  border-color: #f0b400; /* amarelo mais chamativo */
-  box-shadow: 0 0 5px rgba(240, 180, 0, 0.5);
-}
-
-/* Botão */
-.btn-filter {
-  padding: 12px 20px;
-  background: linear-gradient(90deg, #f5c542, #e6a800);
-  border: none;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.btn-filter:hover {
-  background: linear-gradient(90deg, #ffd75c, #f0b400);
-  transform: translateY(-2px);
-}
-
-/* Mensagem de erro */
-.error-msg {
-  margin-top: 10px;
-  color: #b00000;
-  font-weight: 600;
-}
-
-/* ========================= */
-/* GRÁFICO */
-/* ========================= */
-
-#graficoPTQA {
-    background-color: linear-gradient(180deg, #fff8d4, #fff);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-}
-
-.planoFundoGrafico{
-  background-color: white;
-}
 /* ========================= */
 /* RESPONSIVO */
 /* ========================= */
 
 @media (max-width: 600px) {
-  .titulossubpaginas {
-    font-size: 2rem;
-  }
+    .titulossubpaginas {
+        font-size: 2rem;
+    }
 
-  .hex {
-    width: 120px;
-    height: 120px;
-  }
+    .hex {
+        width: 120px;
+        height: 120px;
+    }
+
+    .divfooter {
+        margin-left: 20px;
+        padding-top: 15px;
+    }
+    
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #imagemifscdiv {
+        text-align: center;
+    }
+
+    /* Reduz o espaçamento dos blocos em telas menores */
+    .control-container,
+    .topic,
+    .filter-section {
+        padding: 15px;
+    }
 }

@@ -1,84 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MABEL - Gráficos</title>
 
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author"   content="Anthony, Eloiza e Mateus">
-        <title>MABEL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../CSS/geral.css">
+</head>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../CSS/geral.css">
+<body>
+    <header>
+        <picture>
+            <img src="../Imagens/logoIFSCcoloridaComprida.png" alt="ifsc">
+        </picture>
+        <ul class="menu">
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a class="menuItem" href="mabel.html">MABEL</a></li>
+            <li><a href="ptqa.html">PTQA</a></li>
+        </ul>
+    </header>
 
-    </head>
-
-    <body>
-        <header>
-            <picture>
-                <img src="../Imagens/logoIFSCcoloridaComprida.png" alt="ifsc">
-            </picture>
-            <ul class="menu">
-                <li><p><a href="../index.html">Início</a></p></li>
-                <li><p><a href="sobre.html">Sobre</a></p></li>
-                <li><p><a class="menuItem" href="mabel.html">MABEL</a></p></li>
-                <li><p><a href="ptqa.html">PTQA</a></p></li>
-            </ul>
-        </header>
-
-        <div class="graphic-container">
+    <main>
+        <div class="control-container">
             <h2>Selecione o gráfico desejado:</h2>
-            
-            <select id="selectMabel" class="graphic-form">
-                <option value="14" >Temperaturas internas registradas</option>
-                <option value="15" >Temperaturas externas registradas</option>
-                <option value="16" >Umidades internas registradas</option>
-                <option value="17" >Umidades externas registradas</option>
-                <option value="18" >Temperatura do ninho</option>
-                <option value="19" >Umidades e temperaturas interna e externa na data atual</option>
-                <option value="20" >Temperatura interna média</option>
-                <option value="21" >Temperatura externa média</option>
-                <option value="22" >Umidade interna média</option>
-                <option value="23" >Umidade externa média</option>
-                <option value="24" >Temperatura máxima</option>
-                <option value="25" >Temperatura mínima</option>
-                <option value="26" >Diferença média entre temperatura externa e interna</option>
-                <option value="27" >Média diária da temperatura interna</option>
-                <option value="28" >Média diária da umidade interna</option>
+            <select id="selectMabel" class="custom-select">
+                <option value="14">Temperaturas internas registradas</option>
+                <option value="15">Temperaturas externas registradas</option>
+                <option value="16">Umidades internas registradas</option>
+                <option value="17">Umidades externas registradas</option>
+                <option value="18">Temperatura do ninho</option>
+                <option value="19">Umidades e temperaturas (Int/Ext)</option>
+                <option value="20">Temperatura interna média</option>
+                <option value="21">Temperatura externa média</option>
+                <option value="22">Umidade interna média</option>
+                <option value="23">Umidade externa média</option>
+                <option value="24">Temperatura máxima do ninho</option>
+                <option value="25">Temperatura mínima do ninho</option>
+                <option value="26">Diferença média Temp (Int/Ext)</option>
+                <option value="27">Média diária Temp Interna</option>
+                <option value="28">Média diária Umidade Interna</option>
             </select>
-        </div>
 
-        <div class="filter-container">
-            <h2>Selecione período do gráfico:</h2>
-        
+            </div>
+
+        <div class="control-container filter-section">
+            <h2>Selecione o período:</h2>
             <form id="filterForm" class="filter-form">
                 <div class="input-group">
                     <label for="dataInicial">Data inicial</label>
-                    <input type="date" id="dataInicial" name="dataInicial" required>
+                    <input type="date" id="dataInicial" required>
                 </div>
         
                 <div class="input-group">
                     <label for="dataFinal">Data final</label>
-                    <input type="date" id="dataFinal" nome="dataFinal" required>
+                    <input type="date" id="dataFinal" required>
                 </div>
         
                 <div class="input-group">
                     <label for="filtrofreq">Frequência</label>
-                    <input type="number" id="filtrofreq" value="20">
+                    <input type="number" id="filtrofreq" value="20" min="1">
                 </div>
 
-                <button type="submit" id="botaoData" class="btn-filter">Filtrar</button>
+                <button type="submit" id="botaoData" class="btn-filter">Gerar Gráfico</button>
             </form>
-        
             <p id="pErro" class="error-msg"></p>
         </div>
-        <section class="planoFundoGrafico">
+
+        <div class="planoFundoGrafico"> 
             <canvas id="graficoGerado"></canvas>
-        </section>
-        
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="../JS/graficos.js" defer></script>
-    </body>
+        </div>
+    </main>
+
+    <footer>
+        <div id="imagemifscdiv">
+            <img id="logoifscfooter" src="../Imagens/logoIfscBranca.png" alt="Logo do IFSC">
+        </div>
+
+        <div class="divfooter">
+            <h4 id="titulosfooter">Contato</h4>
+            <ul>
+                <li><a href="mailto:anthony.th@aluno.ifsc.edu.br">anthony.th@aluno.ifsc.edu.br</a></li>
+                <li><a href="mailto:eloiza.c@aluno.ifsc.edu.br">eloiza.c@aluno.ifsc.edu.br</a></li>
+                <li><a href="mailto:mateus.fk2010@aluno.ifsc.edu.br">mateus.fk2010@aluno.ifsc.edu.br</a></li>
+                <li><a href="mailto:evelynsouzabrito8@gmail.com">evelynsouzabrito8@gmail.com</a></li>
+            </ul>
+        </div>
+
+        <div class="divfooter">
+            <h4 id="titulosfooter">Alunos</h4>
+            <ul>
+                <li>Anthony Testa Hentges</li>
+                <li>Eloiza Teodoro de Carli</li>
+                <li>Evelyn Souza Brito</li>
+                <li>Mateus Furlan Krutschener</li>
+            </ul>
+        </div>
+
+        <div class="divfooter">
+            <h4 id="titulosfooter">Informações Acadêmicas</h4>
+            <ul>
+                <li>Professor: Alexandre Anderson dos Santos</li>
+                <li>Módulo IV</li>
+                <li>Data de desenvolvimento: 2025/2</li>
+            </ul>
+        </div>
+
+        <div class="divfooter">
+            <h4 id="titulosfooter">Descubra</h4>
+            <ul>
+                <li><a href="../index.html">INÍCIO</a></li>
+                <li><a href="mabel.html">MABEL</a></li>
+                <li><a href="ptqa.html">PTQA</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../JS/graficos.js" defer></script>
+</body>
 </html>

@@ -1,15 +1,19 @@
-// Inputs 
-let botaoData = document.getElementById("botaoData");
+// Inputs
+const botaoData = document.getElementById("botaoData");
+const dataInicialEl = document.getElementById("dataInicial");
+const dataFinalEl = document.getElementById("dataFinal");
+const paragrafoErroGrafico = document.getElementById("pErro");
+const selectMabel = document.getElementById("selectMabel");
+const selectPTQA = document.getElementById("selectPTQA");
+const filtrofreq = document.getElementById("filtrofreq");
+
 let dataInicial = null;
 let dataFinal = null;
-let paragrafoErroGrafico = document.getElementById("pErro");
-let selectMabel = document.getElementById("selectMabel");
-let selectPTQA = document.getElementById("selectPTQA");
-let filtrofreq = document.getElementById("filtrofreq");
 let consultaSelecionada = null;
 let pasta = "";
+let graficoAtual = null;
 
-// CONSULTAS (legenda preservada)
+// CONSULTAS (Mantive sua estrutura original)
 const consultas = {
     1:  { arquivo: "1.2ptqa", legenda: "Baixa AQI", tipoGrafico: "line" },
     2:  { arquivo: "1.3ptqa", legenda: "Umidade>70%", tipoGrafico: "bar" },
@@ -40,107 +44,106 @@ const consultas = {
     26: { arquivo: "2.7mabel", legenda: "Diferença Média Temperatura Interna e Externa", tipoGrafico: "bar" },
     27: { arquivo: "2.8mabel", legenda: "Média Diária Temperatura Interna", tipoGrafico: "bar" },
     28: { arquivo: "2.9mabel", legenda: "Média Diária Umidade Interna", tipoGrafico: "bar" }
-
 };
 
-
-// SELECT listeners
+// Configuração inicial baseada no Select existente na página
 if (selectPTQA) {
-    consultaSelecionada = consultas[1];
-    selectPTQA.addEventListener("change", () => {
-    consultaSelecionada = consultas[selectPTQA.value];
-    });
+    consultaSelecionada = consultas[selectPTQA.value || 1];
     pasta = "ptqa";
-}
-
-if (selectMabel) {
-    consultaSelecionada = consultas[14];
+    selectPTQA.addEventListener("change", () => {
+        consultaSelecionada = consultas[selectPTQA.value];
+    });
+} else if (selectMabel) {
+    consultaSelecionada = consultas[selectMabel.value || 14];
+    pasta = "mabel";
     selectMabel.addEventListener("change", () => {
         consultaSelecionada = consultas[selectMabel.value];
     });
-    pasta = "mabel";
 }
 
-let graficoAtual = null;
-
-// =============================
-// Função principal do gráfico
-// =============================
+// Função Principal
 function chamarBackend(event) {
     event.preventDefault();
 
-    dataInicial = document.getElementById("dataInicial");
-    dataFinal = document.getElementById("dataFinal");
-
-    const inicio = dataInicial.value;
-    const fim = dataFinal.value;
-    // pegar valor do filtro
+    const inicio = dataInicialEl.value;
+    const fim = dataFinalEl.value;
     const freq = filtrofreq.value;
 
+    // Validações
     if (!inicio || !fim) {
         paragrafoErroGrafico.innerText = "Por favor, preencha as duas datas.";
         return;
     }
-
     if (inicio > fim) {
         paragrafoErroGrafico.innerText = "A data inicial não pode ser maior que a final.";
         return;
     }
-
-    // validar filtro > 0
     if (freq <= 0) {
         paragrafoErroGrafico.innerText = "O filtro de dias deve ser maior que 0.";
         return;
     }
 
+    paragrafoErroGrafico.innerText = "Carregando dados...";
 
-    paragrafoErroGrafico.innerText = "";
+    // Construção da URL (ajuste o localhost se necessário)
+    const url = `http://localhost/sistemaPrincipal/backEnd/${pasta}/${consultaSelecionada.arquivo}.php?` + 
+                `dataInicial=${inicio}&dataFinal=${fim}&filtrofreq=${freq}`;
 
-    const url = `http://localhost/sistemaPrincipal/backEnd/${pasta}/${consultaSelecionada.arquivo}.php?` + `dataInicial=${inicio}&dataFinal=${fim}`
-        + `&filtrofreq=${freq}`; // adicionar filtro na url
-
-    console.log("URL chamada:", url);
+    console.log("Buscando dados em:", url);
 
     fetch(url)
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error("Erro na resposta do servidor");
+            return res.json();
+        })
         .then(data => {
-
-            console.log("JSON recebido:", data);
-
+            console.log("Dados recebidos:", data);
+            
             if (!data || data.length === 0) {
-                paragrafoErroGrafico.innerText = "Nenhum dado encontrado.";
+                paragrafoErroGrafico.innerText = "Nenhum dado encontrado para este período.";
+                if (graficoAtual) {
+                    graficoAtual.destroy();
+                    graficoAtual = null;
+                }
                 return;
             }
 
-            // Selecionar campo de data/hora baseado em qual select está ativo
-            let campoData, campoHora;
+            paragrafoErroGrafico.innerText = ""; // Limpa erros
 
-            if (selectPTQA) {
-                campoData = "dataleitura";
-                campoHora = "horaleitura";
-            }
-
-            if (selectMabel) {
+            // Detectar campos de data/hora
+            let campoData = "dataleitura"; // Default PTQA
+            let campoHora = "horaleitura";
+            
+            if (pasta === "mabel") {
                 campoData = "datainclusao";
                 campoHora = "horainclusao";
             }
 
-            const labels = data.map(d => `${d[campoData] ?? ""} ${d[campoHora] ?? ""}`);
+            // Preparar Labels (Eixo X)
+            const labels = data.map(d => {
+                // Formatação simples de data/hora se existir
+                const dt = d[campoData] || "";
+                const hr = d[campoHora] || "";
+                return `${dt} ${hr}`.trim();
+            });
 
-            // Pega colunas de valores
-            const campos = Object.keys(data[0]);
+            // Preparar Datasets (Eixo Y) - Pega todas as colunas exceto data/hora
+            const chaves = Object.keys(data[0]);
+            const colunasValidas = chaves.filter(k => k !== campoData && k !== campoHora);
+            
+            // Cores automáticas para múltiplas linhas
+            const cores = ['#0a8f41', '#e0c15c', '#36a2eb', '#ff6384'];
 
-            const colunasValidas = campos.filter(c =>
-                c !== campoData &&
-                c !== campoHora
-            );
-
-            const datasets = colunasValidas.map(col => ({
+            const datasets = colunasValidas.map((col, index) => ({
                 label: col,
                 data: data.map(d => d[col]),
-                borderWidth: 2
+                borderWidth: 2,
+                backgroundColor: consultaSelecionada.tipoGrafico === 'bar' ? cores[index % cores.length] : 'transparent',
+                borderColor: cores[index % cores.length],
+                tension: 0.3 // Suaviza linhas
             }));
 
+            // Renderizar Gráfico
             if (graficoAtual) graficoAtual.destroy();
 
             const ctx = document.getElementById("graficoGerado").getContext("2d");
@@ -149,84 +152,43 @@ function chamarBackend(event) {
                 type: consultaSelecionada.tipoGrafico,
                 data: { labels, datasets },
                 options: {
-                responsive: true,
-                maintainAspectRatio: false,
-
-                plugins: {
-                    title: {
-                    display: true,
-                    text: consultaSelecionada.legenda,
-                    font: {
-                        size: 22,
-                        family: "'Arial', sans-serif",
-                        weight: 'bold'
-                    },
-                    color: '#333',            // cor do título
-                    padding: { top: 10, bottom: 30 }
-                    },
-                    legend: {
-                    display: true,
-                    position: 'top',          // 'top', 'bottom', 'left', 'right'
-                    labels: {
-                        font: {
-                        size: 14,
-                        family: "'Arial', sans-serif"
+                    responsive: true,
+                    maintainAspectRatio: false, // CRUCIAL PARA A ALTURA FUNCIONAR
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: consultaSelecionada.legenda,
+                            font: { size: 18, family: "'Poppins', sans-serif" },
+                            padding: { top: 10, bottom: 20 }
                         },
-                        color: '#555'
-                    }
+                        legend: {
+                            position: 'top'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
                     },
-                    tooltip: {
-                    enabled: true,
-                    backgroundColor: 'rgba(0,0,0,0.7)',
-                    titleFont: { size: 14, family: "'Arial', sans-serif", weight: 'bold'},
-                    bodyFont: { size: 12, family: "'Arial', sans-serif" },
-                    padding: 10,
-                    cornerRadius: 4,
-                    displayColors: false
-                    }
-                },
-
-                scales: {
-                    x: {
-                    grid: {
-                        display: false  // remove linhas de grade horizontais
-                    },
-                    ticks: {
-                        color: '#666',
-                        font: {
-                        size: 12,
-                        family: "'Arial', sans-serif"
+                    scales: {
+                        x: {
+                            ticks: { maxRotation: 45, minRotation: 45 },
+                            grid: { display: false }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#e5e5e5' }
                         }
                     }
-                    },
-                    y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(200,200,200,0.3)',
-                        lineWidth: 1,
-                        borderDash: [5, 5]
-                    },
-                    ticks: {
-                        color: '#666',
-                        font: {
-                        size: 12
-                        }
-                    }
-                    }
-                },
-
-                // animação (opcional)
-                animation: {
-                    duration: 1000,
-                    easing: 'easeOutQuart'
                 }
-                }
-
             });
         })
-        .catch(err => console.error("Erro:", err));
+        .catch(err => {
+            console.error(err);
+            paragrafoErroGrafico.innerText = "Erro ao conectar com o servidor.";
+        });
 }
 
-
-// Botão de gerar gráfico
-botaoData.addEventListener("click", chamarBackend);
+// Event Listener
+if(botaoData) {
+    botaoData.addEventListener("click", chamarBackend);
+}

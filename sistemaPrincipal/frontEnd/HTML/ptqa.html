@@ -1,56 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anthony, Eloiza e Mateus">
+    <title>PTQA</title>
 
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author"   content="Anthony, Eloiza e Mateus">
-        <title>PTQA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../CSS/geral.css">
+</head>
 
-        <link rel="stylesheet" type="text/css" href="../CSS/geral.css">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
-    </head>
+<body>
+    <header>
+        <picture>
+            <img src="../Imagens/logoIFSCcoloridaComprida.png" alt="ifsc">
+        </picture>
+        <ul class="menu">
+            <li><a class="menuItem" href="../index.html">Início</a></li>
+            <li><a class="menuItem" href="sobre.html">Sobre</a></li>
+            <li><a class="menuItem" href="mabel.html">MABEL</a></li>
+            <li><a class="menuItem" href="ptqa.html">PTQA</a></li>
+        </ul>
+    </header>
 
-    <body>
-
-        <header>
-            <picture>
-                <img src="../Imagens/logoIFSCcoloridaComprida.png" alt="ifsc">
-            </picture>
-            <ul class="menu">
-                <li><p><a class="menuItem" href="../index.html">Início</a></p></li>
-                <li><p><a class="menuItem" href="sobre.html">Sobre</a></p></li>
-                <li><p><a class="menuItem" href="mabel.html">MABEL</a></p></li>
-                <li><p><a class="menuItem" href="ptqa.html">PTQA</a></p></li>
-            </ul>
-        </header>
-
-        <div class="graphic-container">
-            <h2>Selecione o gráfico desejado</h2>
-
-            <select id="selectPTQA" class="graphic-form">
-                <option value="1" >Baixa qualidade do ar registrada</option>
-                <option value="2" >Umidade maior que 70% registrada</option>
-                <option value="3" >Gás carbônico acima que 1000pm registrada</option>
-                <option value="4" >Pressão atmosférica abaixo que 1000 hPa registrada</option>
-                <option value="5" >Gases voláteis acima de 200ppb</option>
-                <option value="6" >Temperaturas médias registrada</option>
-                <option value="7" >Umidade média por dia</option>
-                <option value="8" >Máxima concentração de gás carbonico registrada</option>
-                <option value="9" >Mínima pressão registrada</option>
+    <main>
+        <div class="control-container">
+            <h2>Selecione o gráfico desejado:</h2>
+            <select id="selectPTQA" class="custom-select">
+                <option value="1">Baixa qualidade do ar registrada</option>
+                <option value="2">Umidade maior que 70% registrada</option>
+                <option value="3">Gás carbônico acima que 1000pm registrada</option>
+                <option value="4">Pressão atmosférica abaixo que 1000 hPa registrada</option>
+                <option value="5">Gases voláteis acima de 200ppb</option>
+                <option value="6">Temperaturas médias registrada</option>
+                <option value="7">Umidade média por dia</option>
+                <option value="8">Máxima concentração de gás carbonico registrada</option>
+                <option value="9">Mínima pressão registrada</option>
                 <option value="10">Ótima qualidade do ar registrada</option>
                 <option value="11">Temperaturas máxima, média e mínima registradas</option>
                 <option value="12">Nível médio de gases voláteis</option>
                 <option value="13">Cinco dias com maior média de concentração de gás carbonico</option>
             </select>
-
         </div>
 
-        <div class="filter-container">
-            <h2>Selecione período do gráfico</h2>
-
+        <div class="control-container filter-section">
+            <h2>Selecione o período:</h2>
             <form id="filterForm" class="filter-form">
                 <div class="input-group">
                     <label for="dataInicial">Data inicial</label>
@@ -63,22 +60,65 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="filtrofreq">Filtro - Dias</label>
+                    <label for="filtrofreq">Frequência</label>
                     <input type="number" id="filtrofreq" value="20">
                 </div>                
         
-                <button type="submit" class="btn-filter" id="botaoData">Filtrar</button>
+                <button type="submit" class="btn-filter" id="botaoData">Gerar Gráfico</button>
             </form>
-        
             <p id="pErro" class="error-msg"></p>
         </div>
-        <section class="planoFundoGrafico">
+
+        <div class="planoFundoGrafico">
             <canvas id="graficoGerado"></canvas>
-        </section>
-        
+        </div>
+    </main>
 
-        <script src="../JS/graficos.js" defer></script>
-    </body>
+    <footer>
+        <div id="imagemifscdiv">
+            <img id="logoifscfooter" src="../Imagens/logoIfscBranca.png" alt="Logo do IFSC">
+        </div>
 
-    
+        <div class="divfooter">
+            <h4 id="titulosfooter">Contato</h4>
+            <ul>
+                <li><a href="mailto:anthony.th@aluno.ifsc.edu.br">anthony.th@aluno.ifsc.edu.br</a></li>
+                <li><a href="mailto:eloiza.c@aluno.ifsc.edu.br">eloiza.c@aluno.ifsc.edu.br</a></li>
+                <li><a href="mailto:mateus.fk2010@aluno.ifsc.edu.br">mateus.fk2010@aluno.ifsc.edu.br</a></li>
+                <li><a href="mailto:evelynsouzabrito8@gmail.com">evelynsouzabrito8@gmail.com</a></li>
+            </ul>
+        </div>
+
+        <div class="divfooter">
+            <h4 id="titulosfooter">Alunos</h4>
+            <ul>
+                <li>Anthony Testa Hentges</li>
+                <li>Eloiza Teodoro de Carli</li>
+                <li>Evelyn Souza Brito</li>
+                <li>Mateus Furlan Krutschener</li>
+            </ul>
+        </div>
+
+        <div class="divfooter">
+            <h4 id="titulosfooter">Informações Acadêmicas</h4>
+            <ul>
+                <li>Professor: Alexandre Anderson dos Santos</li>
+                <li>Módulo IV</li>
+                <li>Data de desenvolvimento: 2025/2</li>
+            </ul>
+        </div>
+
+        <div class="divfooter">
+            <h4 id="titulosfooter">Descubra</h4>
+            <ul>
+                <li><a href="../index.html">INÍCIO</a></li>
+                <li><a href="mabel.html">MABEL</a></li>
+                <li><a href="ptqa.html">PTQA</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../JS/graficos.js" defer></script>
+</body>
 </html>
