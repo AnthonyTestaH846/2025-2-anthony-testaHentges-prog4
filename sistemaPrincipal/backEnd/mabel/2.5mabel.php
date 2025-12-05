@@ -19,7 +19,7 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 
-$sql = "SELECT datainclusao, horainclusao, MAX(ninho) as max_ninho
+$sql = "SELECT datainclusao, horainclusao, MAX(ninho) AS 'temperatura máxima do ninho'
 FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
 ORDER BY dataInclusao ASC";

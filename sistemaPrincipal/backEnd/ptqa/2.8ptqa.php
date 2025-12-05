@@ -17,11 +17,11 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, ROUND(AVG(eco2), 1)
+$sql = "SELECT dataleitura, ROUND(AVG(eco2), 1) AS 'concentração de gás carbônico'
 FROM leituraptqa
 WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
 GROUP BY dataleitura
-ORDER BY media_CO2_PPM DESC
+ORDER BY dataleitura DESC
 LIMIT 5
 ";
 

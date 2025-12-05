@@ -22,7 +22,7 @@ if (!$dataInicial || !$dataFinal) {
 $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
-$sql = "SELECT datainclusao, horainclusao, ti, te, hi, he
+$sql = "SELECT datainclusao, horainclusao, ti AS 'temperatura interna', te AS 'temperatura externa', hi AS 'umidade interna', he AS 'umidade externa'
 FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
 ORDER BY dataInclusao ASC";

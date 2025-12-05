@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, MIN(ROUND(pressao, 1)) AS pressão
+$sql = "SELECT dataleitura, MIN(ROUND(pressao, 1)) AS 'pressão atmosférica'
 FROM leituraptqa
 WHERE dataleitura BETWEEN :dataInicial AND :dataFinal
 AND pressao IS NOT NULL

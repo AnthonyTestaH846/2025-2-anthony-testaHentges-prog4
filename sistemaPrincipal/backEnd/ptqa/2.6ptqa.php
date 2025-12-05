@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT ROUND(MAX(temperatura), 1) AS temperatura_máxima, ROUND(MIN(temperatura), 1) AS temperatura_mínima, ROUND(AVG(temperatura), 1) AS temperatura_média
+$sql = "SELECT ROUND(MAX(temperatura), 1) AS 'temperatura máxima', ROUND(MIN(temperatura), 1) AS 'temperatura mínima', ROUND(AVG(temperatura), 1) AS 'temperatura média'
 FROM leituraptqa
 WHERE dataleitura BETWEEN :dataInicial AND :dataFinal;
 AND temperatura IS NOT NULL

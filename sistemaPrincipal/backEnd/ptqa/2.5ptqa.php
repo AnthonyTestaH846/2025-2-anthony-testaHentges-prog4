@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, horaleitura, aqi
+$sql = "SELECT dataleitura, horaleitura, aqi AS 'índice de qualidade do ar'
 FROM leituraptqa
 WHERE aqi = 1
 AND dataleitura BETWEEN :dataInicial AND :dataFinal

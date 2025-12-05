@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, horaleitura, ROUND(pressao, 1) AS pressão
+$sql = "SELECT dataleitura, horaleitura, ROUND(pressao, 1) AS 'pressão atmosférica'
 FROM leituraptqa
 WHERE pressao < 1000
 AND pressao IS NOT NULL

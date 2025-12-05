@@ -19,7 +19,7 @@ if (!$dataInicial || !$dataFinal) {
 }
 
 
-$sql = "SELECT datainclusao, horainclusao, hi
+$sql = "SELECT datainclusao, horainclusao, hi AS 'umidade interna'
 FROM leituramabel
 WHERE dataInclusao
 BETWEEN :dataInicial AND :dataFinal;

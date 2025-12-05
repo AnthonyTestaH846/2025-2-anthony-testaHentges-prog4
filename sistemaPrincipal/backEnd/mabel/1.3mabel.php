@@ -18,7 +18,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT datainclusao, horainclusao, te
+$sql = "SELECT datainclusao, horainclusao, te AS 'temperatura externa'
 FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
 ORDER BY dataInclusao ASC";

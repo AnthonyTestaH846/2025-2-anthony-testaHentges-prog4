@@ -16,9 +16,10 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, horaleitura, eco2
+$sql = "SELECT dataleitura, horaleitura, eco2 AS 'concentração de gás carbônico'
 FROM leituraptqa
 WHERE eco2 < 1000
+AND eco2 > 0
 AND dataleitura BETWEEN :dataInicial AND :dataFinal
 ORDER BY dataleitura ASC
 ";

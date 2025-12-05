@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT dataleitura, horaleituraa, ROUND(tvoc, 1)
+$sql = "SELECT dataleitura, horaleitura, ROUND(tvoc, 1) AS 'quantidade de gases voláteis'
 FROM leituraptqa
 WHERE tvoc > 200
 AND dataleitura BETWEEN :dataInicial AND :dataFinal

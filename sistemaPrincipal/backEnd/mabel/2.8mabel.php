@@ -20,7 +20,7 @@ if (!$dataInicial || !$dataFinal) {
 
 $sql = "SELECT
     datainclusao,
-    AVG(ti) AS media_diaria_ti
+    AVG(ti) AS 'média diária da temperatura interna'
 FROM
     leituramabel
 WHERE

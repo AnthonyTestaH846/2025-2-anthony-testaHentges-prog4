@@ -21,7 +21,7 @@ if (!$dataInicial || !$dataFinal) {
 $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
-$sql = "SELECT datainclusao, horainclusao, AVG(ti - te) as media_diferenca
+$sql = "SELECT datainclusao, horainclusao, AVG(ti - te) AS 'diferença média entre temperatura interna e externa'
 FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
 ORDER BY dataInclusao ASC";

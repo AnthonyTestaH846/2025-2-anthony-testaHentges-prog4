@@ -22,7 +22,7 @@ if (!$dataInicial || !$dataFinal) {
 $dataInicial  = $dataInicial . " 00:00:00";
 $dataFinal     = $dataFinal   . " 23:59:59";
 
-$sql = "SELECT datainclusao, horainclusao, AVG(ti) as media_ti
+$sql = "SELECT datainclusao, horainclusao, AVG(ti) AS 'temperatura interna média'
 FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
 ORDER BY dataInclusao ASC";

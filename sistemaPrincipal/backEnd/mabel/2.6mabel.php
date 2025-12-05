@@ -17,7 +17,7 @@ if (!$dataInicial || !$dataFinal) {
     exit;
 }
 
-$sql = "SELECT datainclusao, horainclusao, MIN(ninho) as min_ninho
+$sql = "SELECT datainclusao, horainclusao, MIN(ninho) AS 'temperatura mínima do ninho'
 FROM leituramabel
 WHERE dataInclusao BETWEEN :dataInicial AND :dataFinal;
 ORDER BY dataInclusao ASC";
