@@ -1,4 +1,4 @@
-// Inputs
+// selecionar elementos
 const botaoData = document.getElementById("botaoData");
 const dataInicialEl = document.getElementById("dataInicial");
 const dataFinalEl = document.getElementById("dataFinal");
@@ -13,7 +13,7 @@ let consultaSelecionada = null;
 let pasta = "";
 let graficoAtual = null;
 
-// CONSULTAS (Mantive sua estrutura original)
+// consultas (seleção de consulta + legenda)
 const consultas = {
     1:  { arquivo: "1.2ptqa", legenda: "Baixa AQI", tipoGrafico: "line" },
     2:  { arquivo: "1.3ptqa", legenda: "Umidade>70%", tipoGrafico: "bar" },
@@ -46,14 +46,15 @@ const consultas = {
     28: { arquivo: "2.9mabel", legenda: "Média Diária Umidade Interna", tipoGrafico: "bar" }
 };
 
-// Configuração inicial baseada no Select existente na página
+// selecionar a pasta das consultas dependendo em qual select estiver na pagina
 if (selectPTQA) {
     consultaSelecionada = consultas[selectPTQA.value || 1];
     pasta = "ptqa";
     selectPTQA.addEventListener("change", () => {
         consultaSelecionada = consultas[selectPTQA.value];
     });
-} else if (selectMabel) {
+}
+if (selectMabel) {
     consultaSelecionada = consultas[selectMabel.value || 14];
     pasta = "mabel";
     selectMabel.addEventListener("change", () => {
@@ -61,15 +62,17 @@ if (selectPTQA) {
     });
 }
 
-// Função Principal
+// funçãop chamar consulta/gerar grafico
 function chamarBackend(event) {
     event.preventDefault();
 
+
+    // valores dos inputs
     const inicio = dataInicialEl.value;
     const fim = dataFinalEl.value;
     const freq = filtrofreq.value;
 
-    // Validações
+    // validações
     if (!inicio || !fim) {
         paragrafoErroGrafico.innerText = "Por favor, preencha as duas datas.";
         return;
@@ -85,7 +88,7 @@ function chamarBackend(event) {
 
     paragrafoErroGrafico.innerText = "Carregando dados...";
 
-    // Construção da URL (ajuste o localhost se necessário)
+    // construção da URL (ajuste o localhost se necessário)
     const url = `http://localhost/sistemaPrincipal/backEnd/${pasta}/${consultaSelecionada.arquivo}.php?` + 
                 `dataInicial=${inicio}&dataFinal=${fim}&filtrofreq=${freq}`;
 
