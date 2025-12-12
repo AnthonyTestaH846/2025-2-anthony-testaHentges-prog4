@@ -151,7 +151,7 @@ function chamarBackend(event) {
                 // --- ALTERAÇÃO AQUI ---
                 // Isso força uma barra de 5px aparecer mesmo se o valor for 0,
                 // permitindo que o usuário passe o mouse sobre ela.
-                minBarLength: 5 
+                minBarLength: 2 
                 // ----------------------
             }));
 
