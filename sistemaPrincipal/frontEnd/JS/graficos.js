@@ -218,7 +218,7 @@ function chamarBackend(event) {
         });
 }
 
-// 
+// se o botao for clicado, chama a função
 if(botaoData) {
     botaoData.addEventListener("click", chamarBackend);
 }
