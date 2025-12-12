@@ -4,13 +4,17 @@ const dataInicialEl = document.getElementById("dataInicial");
 const dataFinalEl = document.getElementById("dataFinal");
 const paragrafoErroGrafico = document.getElementById("pErro");
 const filtrofreq = document.getElementById("filtrofreq");
-
 const select = document.getElementById("selectConsulta");
 
+// parametros 
 let dataInicial = null;
 let dataFinal = null;
+
+// caminho consulta
 let consultaSelecionada = null;
 let pasta = "";
+
+// saber se já existe um gráfico na criação
 let graficoAtual = null;
 
 // consultas (seleção de consulta + legenda)
@@ -67,7 +71,7 @@ if (select) {
     });
 }
 
-// funçãop chamar consulta/gerar grafico
+// função chamar consulta/gerar grafico
 function chamarBackend(event) {
     event.preventDefault();
 
@@ -78,14 +82,19 @@ function chamarBackend(event) {
     const freq = filtrofreq.value;
 
     // validações
+    // datas vazias
     if (!inicio || !fim) {
         paragrafoErroGrafico.innerText = "Por favor, preencha as duas datas.";
         return;
     }
+
+    // data inicial maior que final
     if (inicio > fim) {
         paragrafoErroGrafico.innerText = "A data inicial não pode ser maior que a final.";
         return;
     }
+
+    // filtro zerado
     if (freq <= 0) {
         paragrafoErroGrafico.innerText = "O filtro de dias deve ser maior que 0.";
         return;
@@ -106,9 +115,13 @@ function chamarBackend(event) {
         })
         .then(data => {
             console.log("Dados recebidos:", data);
-            
+
+
+            // se os dados forem maiores que 0, ou seja, existirem
             if (!data || data.length === 0) {
                 paragrafoErroGrafico.innerText = "Nenhum dado encontrado para este período.";
+
+                // destroi o grafico antigo caso exista
                 if (graficoAtual) {
                     graficoAtual.destroy();
                     graficoAtual = null;
@@ -119,7 +132,8 @@ function chamarBackend(event) {
             paragrafoErroGrafico.innerText = ""; // Limpa erros
 
             // Detectar campos de data/hora
-            let campoData = "dataleitura"; // Default PTQA
+            // padrão PTQA, só uma verificação pra se for mabel
+            let campoData = "dataleitura"; 
             let campoHora = "horaleitura";
             
             if (pasta === "mabel") {
@@ -160,18 +174,16 @@ function chamarBackend(event) {
 
             const ctx = document.getElementById("graficoGerado").getContext("2d");
 
+            //gera o grafico
             graficoAtual = new Chart(ctx, {
                 type: consultaSelecionada.tipoGrafico,
                 data: { labels, datasets },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    // --- ADIÇÃO AQUI PARA MELHORAR O HOVER ---
                     interaction: {
                         mode: 'index',
-                        intersect: false, // O mouse não precisa tocar na barra exata, basta estar na linha vertical
-                    },
-                    // -----------------------------------------
+                        intersect: false,
                     plugins: {
                         title: {
                             display: true,
@@ -206,7 +218,7 @@ function chamarBackend(event) {
         });
 }
 
-// Event Listener
+// 
 if(botaoData) {
     botaoData.addEventListener("click", chamarBackend);
 }
