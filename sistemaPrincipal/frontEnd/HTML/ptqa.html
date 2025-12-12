@@ -29,7 +29,7 @@
     <main>
         <div class="control-container">
             <h2>Selecione o gráfico desejado:</h2>
-            <select id="selectPTQA" class="custom-select">
+            <select id="selectConsulta" class="custom-select" pagina="ptqa">
                 <option value="1">Baixa qualidade do ar registrada</option>
                 <option value="2">Umidade maior que 70% registrada</option>
                 <option value="3">Gás carbônico acima que 1000pm registrada</option>
@@ -64,7 +64,7 @@
                     <input type="number" id="filtrofreq" value="20">
                 </div>                
         
-                <button type="submit" class="btn-filter" id="botaoData">Gerar Gráfico</button>
+                <button type="button" class="btn-filter" id="botaoData">Gerar Gráfico</button>
             </form>
             <p id="pErro" class="error-msg"></p>
         </div>

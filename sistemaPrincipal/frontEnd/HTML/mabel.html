@@ -28,7 +28,7 @@
     <main>
         <div class="control-container">
             <h2>Selecione o gráfico desejado:</h2>
-            <select id="selectMabel" class="custom-select">
+            <select id="selectConsulta" class="custom-select" pagina="mabel">
                 <option value="14">Temperaturas internas registradas</option>
                 <option value="15">Temperaturas externas registradas</option>
                 <option value="16">Umidades internas registradas</option>
@@ -66,7 +66,7 @@
                     <input type="number" id="filtrofreq" value="20" min="1">
                 </div>
 
-                <button type="submit" id="botaoData" class="btn-filter">Gerar Gráfico</button>
+                <button type="button" id="botaoData" class="btn-filter">Gerar Gráfico</button>
             </form>
             <p id="pErro" class="error-msg"></p>
         </div>

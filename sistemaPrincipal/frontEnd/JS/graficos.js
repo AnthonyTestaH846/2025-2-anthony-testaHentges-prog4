@@ -3,9 +3,9 @@ const botaoData = document.getElementById("botaoData");
 const dataInicialEl = document.getElementById("dataInicial");
 const dataFinalEl = document.getElementById("dataFinal");
 const paragrafoErroGrafico = document.getElementById("pErro");
-const selectMabel = document.getElementById("selectMabel");
-const selectPTQA = document.getElementById("selectPTQA");
 const filtrofreq = document.getElementById("filtrofreq");
+
+const select = document.getElementById("selectConsulta");
 
 let dataInicial = null;
 let dataFinal = null;
@@ -46,19 +46,24 @@ const consultas = {
     28: { arquivo: "2.9mabel", legenda: "Média Diária Umidade Interna", tipoGrafico: "bar" }
 };
 
-// selecionar a pasta das consultas dependendo em qual select estiver na pagina
-if (selectPTQA) {
-    consultaSelecionada = consultas[selectPTQA.value || 1];
+// pega o atributo pagina definido no html
+const identificadorPagina = select ? select.getAttribute("pagina") : "";
+
+if (identificadorPagina === "ptqa") {
     pasta = "ptqa";
-    selectPTQA.addEventListener("change", () => {
-        consultaSelecionada = consultas[selectPTQA.value];
-    });
-}
-if (selectMabel) {
-    consultaSelecionada = consultas[selectMabel.value || 14];
+    // Define padrão ID 1 se não houver seleção
+    consultaSelecionada = consultas[select.value || 1];
+
+} else if (identificadorPagina === "mabel") {
     pasta = "mabel";
-    selectMabel.addEventListener("change", () => {
-        consultaSelecionada = consultas[selectMabel.value];
+    // Define padrão ID 14 se não houver seleção
+    consultaSelecionada = consultas[select.value || 14];
+}
+
+// listener mudança select
+if (select) {
+    select.addEventListener("change", () => {
+        consultaSelecionada = consultas[select.value];
     });
 }
 
@@ -130,11 +135,10 @@ function chamarBackend(event) {
                 return `${dt} ${hr}`.trim();
             });
 
-            // Preparar Datasets (Eixo Y) - Pega todas as colunas exceto data/hora
+            // Preparar Datasets (Eixo Y)
             const chaves = Object.keys(data[0]);
             const colunasValidas = chaves.filter(k => k !== campoData && k !== campoHora);
             
-            // Cores automáticas para múltiplas linhas
             const cores = ['#0a8f41', '#e0c15c', '#36a2eb', '#ff6384'];
 
             const datasets = colunasValidas.map((col, index) => ({
@@ -143,7 +147,12 @@ function chamarBackend(event) {
                 borderWidth: 2,
                 backgroundColor: consultaSelecionada.tipoGrafico === 'bar' ? cores[index % cores.length] : 'transparent',
                 borderColor: cores[index % cores.length],
-                tension: 0.3 // Suaviza linhas
+                tension: 0.3,
+                // --- ALTERAÇÃO AQUI ---
+                // Isso força uma barra de 5px aparecer mesmo se o valor for 0,
+                // permitindo que o usuário passe o mouse sobre ela.
+                minBarLength: 5 
+                // ----------------------
             }));
 
             // Renderizar Gráfico
@@ -156,7 +165,13 @@ function chamarBackend(event) {
                 data: { labels, datasets },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false, // CRUCIAL PARA A ALTURA FUNCIONAR
+                    maintainAspectRatio: false,
+                    // --- ADIÇÃO AQUI PARA MELHORAR O HOVER ---
+                    interaction: {
+                        mode: 'index',
+                        intersect: false, // O mouse não precisa tocar na barra exata, basta estar na linha vertical
+                    },
+                    // -----------------------------------------
                     plugins: {
                         title: {
                             display: true,
