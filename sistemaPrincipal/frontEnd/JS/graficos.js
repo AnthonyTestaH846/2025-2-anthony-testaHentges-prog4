@@ -163,7 +163,7 @@ function chamarBackend(event) {
                 borderColor: cores[index % cores.length],
                 tension: 0.3,
                 // --- ALTERAÇÃO AQUI ---
-                // Isso força uma barra de 5px aparecer mesmo se o valor for 0,
+                // Isso força uma barra de 5px aparecer mesmo se o valor for 0
                 // permitindo que o usuário passe o mouse sobre ela.
                 minBarLength: 2 
                 // ----------------------
