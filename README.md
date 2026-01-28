@@ -8,7 +8,7 @@ O objetivo do projeto é desenvolver uma interface de monitoramento de um dispos
 - PHP
 - HTML / CSS / JavaScript
 - MySQL
-- XAMP
+- XAMPP
 - Chart.js
 - Git / GitHub
 
