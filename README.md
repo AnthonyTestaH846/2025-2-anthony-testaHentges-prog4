@@ -1,4 +1,4 @@
-Protótipo MABEL PTQA
+## Protótipo MABEL PTQA
 
 ## Descrição
 Projeto desenvolvido durante o curso técnico em Desenvolvimento de Sistemas no IFSC.
